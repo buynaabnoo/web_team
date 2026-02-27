@@ -1,0 +1,352 @@
+/* ============================================
+   styles.css — shared styles for movie app
+   ============================================ */
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Design tokens ── */
+:root {
+  --bg:           #f7f5f2;
+  --surface:      #ffffff;
+  --border:       #e4e0da;
+  --text:         #1a1714;
+  --muted:        #7a746e;
+  --accent:       #2d5a8e;
+  --accent-light: #e8eef5;
+  --star:         #e8a020;
+  --pill-border:  #c8c2bb;
+  --card-bg:      #fdfcfb;
+  --badge-top:    #2d5a8e;
+  --badge-recent: #5a7a5a;
+  --heart:        #c0435a;
+  --pill-bg:      #2d5a8e;
+}
+
+/* ── Base ── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 40px 28px 80px;
+}
+
+/* ── Typography ── */
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+/* ── Star and count ── */
+.star {
+  color: var(--star);
+  font-size: 1.1rem;
+}
+
+.count {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* ── Divider ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 4px 0 18px;
+}
+
+/* ── Poster placeholder (shared) ── */
+.poster {
+  background: #ddd8d0;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.poster svg {
+  opacity: 0.45;
+  width: 40px;
+  height: 40px;
+}
+
+/* ── Review card (shared) ── */
+.review-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: box-shadow 0.2s;
+}
+
+.review-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.review-date {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.review-movie-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.review-comment {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.5;
+  flex: 1;
+  min-height: 40px;
+}
+
+/*
+  ── Heart like button ──
+  The heart is added via CSS ::before so both pages always show
+  the exact same solid heart symbol (U+2665) regardless of what
+  character the HTML author typed. The HTML only contains the number.
+*/
+.review-likes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--heart);
+  margin-top: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.review-likes::before {
+  content: '\2665'; /* ♥ solid heart — guaranteed same on every browser */
+  font-size: 1rem;
+}
+
+.review-likes:hover {
+  opacity: 0.75;
+}
+
+/* ── Badges ── */
+.badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+
+.badge-top    { background: var(--badge-top);    color: #fff; }
+.badge-recent { background: var(--badge-recent); color: #fff; }
+
+/* ── Username pill ── */
+.username-badge {
+  background: var(--pill-bg);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+/* ── Buttons ── */
+.btn-watchlist {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 13px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-watchlist:hover {
+  background: #244d7a;
+  transform: translateY(-1px);
+}
+
+.btn-watched {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--pill-border);
+  border-radius: 30px;
+  padding: 12px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.btn-watched:hover {
+  background: #eee9e2;
+  border-color: #b0a898;
+}
+
+.btn-see-all {
+  border: 1.5px solid var(--pill-border);
+  border-radius: 30px;
+  padding: 12px 48px;
+  background: transparent;
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  width: 100%;
+  max-width: 440px;
+}
+
+.btn-see-all:hover {
+  background: #eee9e2;
+  border-color: #b0a898;
+}
+
+.info-link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.info-link:hover { color: #1f4068; }
+
+.rate-link {
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.review-link {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Genre pills ── */
+.genre-pill {
+  border: 1.5px solid var(--pill-border);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.genre-pill:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Credits ── */
+.credits {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.credit-row {
+  font-size: 0.88rem;
+  display: flex;
+  gap: 6px;
+}
+
+.credit-label { font-weight: 700; color: var(--text); }
+.credit-names { color: var(--muted); }
+
+/* ── See-all wrapper ── */
+.see-all-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Focus styles (keyboard accessibility) ── */
+button:focus-visible,
+.trailer:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ── Touch devices: disable stuck hover states ── */
+@media (hover: none) {
+  .trailer:hover           { filter: none; }
+  .trailer:hover .play-btn { transform: none; border-color: rgba(120,115,108,0.7); }
+  .btn-watchlist:hover     { transform: none; }
+  .genre-pill:hover        { background: none; border-color: var(--pill-border); color: var(--muted); }
+  .review-card:hover       { box-shadow: none; }
+}
+
+/* ── Mobile shared ── */
+@media (max-width: 640px) {
+  .page        { padding: 20px 16px 60px; }
+  .btn-see-all { max-width: 100%; padding: 14px 24px; font-size: 0.92rem; }
+  .genre-pill  { padding: 6px 14px; font-size: 0.8rem; }
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
