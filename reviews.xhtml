@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviews</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
+  <!-- Shared styles -->
+  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <!-- This page's styles -->
+  <link rel="stylesheet" type="text/css" href="../css/reviews.css" />
+</head>
+
+<body>
+<div class="page" role="main">
+
+  <h1>Reviews</h1>
+
+  <!-- ── Movie summary ── -->
+  <div class="movie-summary">
+
+    <!-- Small poster — just for visual appearance -->
+    <div class="movie-poster" role="img" aria-label="Movie poster">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="4" y="8" width="56" height="48" rx="4" fill="#9dafc2" />
+        <circle cx="22" cy="24" r="6" fill="#7a95ab" />
+        <path d="M4 44 L18 30 L28 40 L38 28 L60 52 L4 52Z" fill="#7a95ab" />
+      </svg>
+    </div>
+
+    <!-- Movie info card -->
+    <div>
+      <div class="movie-info-title">&#8220;Movie name&#8221;</div>
+      <div class="movie-info">
+
+        <!-- Watched toggle -->
+        <div class="toggle-row">
+          <label class="toggle" aria-label="Mark as watched">
+            <input type="checkbox" checked="checked" />
+            <span class="toggle-track">&#160;</span>
+            <span class="toggle-thumb">&#160;</span>
+          </label>
+          <span>Mark as watched</span>
+        </div>
+
+        <!-- Rating -->
+        <div class="rating-row" aria-label="Rating: 4.5 out of 5, 12 thousand votes">
+          <span class="star" aria-hidden="true">&#9733;</span>
+          <span>4.5</span>
+          <span class="count">(12k)</span>
+        </div>
+
+        <!-- Action links -->
+        <button class="info-link">Add to Your Watchlist</button>
+        <button class="info-link">Rate and Review</button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Review list ── -->
+  <section aria-label="User reviews">
+    <div class="reviews-list">
+
+      <article class="review-card">
+        <div class="review-card-header">
+          <span class="username-badge">username</span>
+          <span class="review-date">2026 : 12 : 31</span>
+        </div>
+        <div class="review-movie-name">&#8220;Movie name&#8221;</div>
+        <p class="review-comment">comment&#8230;</p>
+        <!-- Heart is added by CSS ::before — only the number goes here -->
+        <button class="review-likes" aria-label="Like this review, 100 likes">100</button>
+      </article>
+
+      <article class="review-card">
+        <div class="review-card-header">
+          <span class="username-badge">username</span>
+          <span class="review-date">2026 : 12 : 31</span>
+        </div>
+        <div class="review-movie-name">&#8220;Movie name&#8221;</div>
+        <p class="review-comment">comment&#8230;</p>
+        <button class="review-likes" aria-label="Like this review, 100 likes">100</button>
+      </article>
+
+      <article class="review-card">
+        <div class="review-card-header">
+          <span class="username-badge">username</span>
+          <span class="review-date">2026 : 12 : 31</span>
+        </div>
+        <div class="review-movie-name">&#8220;Movie name&#8221;</div>
+        <p class="review-comment">comment&#8230;</p>
+        <button class="review-likes" aria-label="Like this review, 100 likes">100</button>
+      </article>
+
+      <article class="review-card">
+        <div class="review-card-header">
+          <span class="username-badge">username</span>
+          <span class="review-date">2026 : 12 : 31</span>
+        </div>
+        <div class="review-movie-name">&#8220;Movie name&#8221;</div>
+        <p class="review-comment">comment&#8230;</p>
+        <button class="review-likes" aria-label="Like this review, 100 likes">100</button>
+      </article>
+
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
