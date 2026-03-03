@@ -21,7 +21,8 @@ h1 {
 .movie-card {
   background: #eceaf6;
   border-radius: 12px;
-  aspect-ratio: 2/3;
+  aspect-ratio: 60/83;
+  object-fit: contain;
   display: flex;
   align-items: center;
   justify-content: center;

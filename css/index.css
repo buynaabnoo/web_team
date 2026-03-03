@@ -1,0 +1,527 @@
+/* ============================================
+   index.css — styles only for the homepage
+   ============================================ */
+
+/* ── Hero / Trailer Section ── */
+.hero {
+  background: #1a1714;
+  margin-top: -40px;
+  margin: 0 -28px;
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  min-height: 600px;
+}
+
+/* Left: main trailer player */
+.hero-player {
+  position: relative;
+  background: #2a2520;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 500px;
+}
+
+/* Prev / Next arrows */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.hero-arrow:hover  { background: rgba(255,255,255,0.3); }
+.hero-arrow.left   { left: 14px; }
+.hero-arrow.right  { right: 14px; }
+
+/* Play button in center */
+.hero-play {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.3);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  margin: 0 auto;
+  margin-top: 250px;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.hero-play:hover {
+  background: rgba(107,53,194,0.7);
+  transform: scale(1.06);
+}
+
+/* Info bar below the player */
+.hero-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: #3a3530;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.hero-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.hero-trailer-link {
+  font-size: 0.78rem;
+  color: #c4a8f0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.hero-trailer-link:hover { color: #fff; }
+
+.hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.hero-meta .star { font-size: 0.85rem; }
+
+/* Right: Next panel */
+.hero-next {
+  background: #111;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.hero-next-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+
+.next-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.next-item:hover { background: rgba(255,255,255,0.07); }
+
+.next-thumb {
+  width: 64px;
+  height: 48px;
+  border-radius: 6px;
+  background: #2a2520;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.next-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.next-play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+}
+
+.next-info { flex: 1; }
+
+.next-movie-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.next-trailer-link {
+  font-size: 0.72rem;
+  color: #c4a8f0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.next-meta {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.next-meta .star { font-size: 0.75rem; }
+
+.hero-next-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+/* ════════════════════════════════
+   TOP 10 SECTION
+   ════════════════════════════════ */
+.section {
+  margin-top: 48px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.4rem;
+}
+
+.section-link {
+  font-size: 0.83rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.section-link:hover { color: var(--accent-dark); }
+
+/* Top 3 big cards */
+.top3-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.top-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.top-card:hover {
+  box-shadow: 0 6px 24px rgba(107,53,194,0.12);
+  transform: translateY(-2px);
+}
+
+.top-card-poster {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #ddd8d0;
+  overflow: hidden;
+}
+
+.top-card-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.top-card-body {
+  padding: 12px 14px;
+}
+
+.top-card-rank {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.top-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.top-card-meta {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.top-card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.top-card-rating .star { font-size: 0.85rem; }
+
+.top-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-mark-watched {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 10px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-mark-watched:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-add {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: none;
+  font-size: 1.1rem;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-add:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* #4 to #10 smaller row */
+.top-rest-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.top-rest-card {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  aspect-ratio: 2/3;
+  background: #ddd8d0;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.top-rest-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.top-rest-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.top-rest-rank {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ════════════════════════════════
+   BROWSE ROWS (New to Movies etc)
+   ════════════════════════════════ */
+.browse-row {
+  margin-top: 40px;
+}
+
+.browse-row-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 14px;
+  font-family: 'Playfair Display', serif;
+}
+
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+}
+
+.poster-item {
+  aspect-ratio: 2/3;
+  border-radius: 10px;
+  background: #ddd8d0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.poster-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.poster-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ════════════════════════════════
+   WE LET YOU SECTION
+   ════════════════════════════════ */
+.features-section {
+  margin-top: 48px;
+}
+
+.features-title {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.feature-card:hover {
+  box-shadow: 0 4px 20px rgba(107,53,194,0.1);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.feature-text h3 {
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+}
+
+.feature-text p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .hero                { grid-template-columns: 1fr; }
+  .hero-next           { display: none; }
+  .top3-grid           { grid-template-columns: 1fr 1fr; }
+  .top-rest-grid       { grid-template-columns: repeat(4, 1fr); }
+  .poster-grid         { grid-template-columns: repeat(4, 1fr); }
+  .features-grid       { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+  .hero                { margin: 0 -16px; }
+  .hero-play           { width: 54px; height: 54px; font-size: 1.4rem; }
+  .top3-grid           { grid-template-columns: 1fr; }
+  .top-rest-grid       { grid-template-columns: repeat(4, 1fr); }
+  .poster-grid         { grid-template-columns: repeat(3, 1fr); }
+  .features-grid       { grid-template-columns: 1fr; }
+  .section-title       { font-size: 1.2rem; }
+}

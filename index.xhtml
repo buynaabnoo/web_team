@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cinema Production</title>
+  <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
+  <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="./css/index.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════
+       SIDEBAR OVERLAY
+       ════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
+
+  <!-- ════════════════════════════════════════
+       SIDEBAR
+       ════════════════════════════════════════ -->
+  <div class="sidebar" id="sidebar">
+    <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+    <a href="#" class="sidebar-item">&#128269; Advanced Search</a>
+    <hr class="sidebar-divider" />
+    <a href="#" class="sidebar-item">&#128100; Profile</a>
+    <a href="./html/watchlist.xhtml" class="sidebar-item">&#10003; Watchlist</a>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+       ════════════════════════════════════════ -->
+  <div class="navbar">
+
+    <a href="index.xhtml" class="nav-logo">
+      <img src="./img/logo_croped.png" alt="Cinema Production logo" />
+      <span class="nav-logo-name">Cinema Production</span>
+    </a>
+
+    <button class="nav-menu-btn" onclick="openSidebar()">
+      <span>&#9776;</span> Menu
+    </button>
+
+    <div class="nav-search">
+      <input type="text" placeholder="Search movies, shows..." />
+      <button class="nav-search-filter">All &#9650;</button>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-profile-btn">Profile</button>
+      <a href="./html/watchlist.xhtml" class="nav-link">Watchlist</a>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════
+       MAIN CONTENT
+       ════════════════════════════════════════ -->
+  <div class="page">
+
+    <!-- ── Hero / Trailer Section ── -->
+    <div class="hero">
+
+      <!-- Main player -->
+      <div class="hero-player">
+        <button class="hero-arrow left">&#9664;</button>
+
+        <button class="hero-play">&#9654;</button>
+
+        <button class="hero-arrow right">&#9654;</button>
+
+        <!-- Info bar at bottom of player -->
+        <div class="hero-info">
+          <div class="hero-thumb">
+            <img src="https://placehold.co/56x56" alt="The Drama thumbnail" />
+          </div>
+          <div>
+            <div class="hero-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="hero-trailer-link">Watch the trailer</a>
+            <div class="hero-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6</span>
+              <span>&#8212;</span>
+              <span>16 comments</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Next panel -->
+      <div class="hero-next">
+        <div class="hero-next-title">Next</div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 10 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 20 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 35 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 20 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 20 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="next-item">
+          <div class="next-thumb">
+            <img src="https://placehold.co/64x48" alt="The Drama" />
+            <div class="next-play-icon">&#9654;</div>
+          </div>
+          <div class="next-info">
+            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
+            <a href="#" class="next-trailer-link">Watch the trailer</a>
+            <div class="next-meta">
+              <span class="star">&#9733;</span>
+              <span>4.6 &#8212; 20 comments</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-next-label">Watch new movies and trailers</div>
+      </div>
+
+    </div>
+    <!-- end hero -->
+
+    <!-- ── Top 10 This Month ── -->
+    <div class="section">
+      <div class="section-header">
+        <h2 class="section-title">Top 10 This Month</h2>
+      </div>
+
+      <!-- Top 3 big cards -->
+      <div class="top3-grid">
+
+        <div class="top-card">
+          <div class="top-card-poster">
+            <a href="./html/movie_details.xhtml" >
+            <img src="https://placehold.co/400x225" alt="The Drama" />
+            </a>
+          </div>
+          <div class="top-card-body">
+            <div class="top-card-rank">#1</div>
+            <div class="top-card-title">&#8220;The Drama&#8221;</div>
+            <div class="top-card-meta">2026 &#8212; 12 eps &#8212; TV show &#8212; new</div>
+            <div class="top-card-rating">
+              <span class="star">&#9733;</span>
+              <span>4.5</span>
+              <span class="count">(9k)</span>
+            </div>
+            <div class="top-card-actions">
+              <button class="btn-mark-watched">Mark as watched</button>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-card">
+          <div class="top-card-poster">
+            <a href="./html/movie_details.xhtml" >
+            <img src="https://placehold.co/400x225" alt="The Drama" />
+            </a>          </div>
+          <div class="top-card-body">
+            <div class="top-card-rank">#2</div>
+            <div class="top-card-title">&#8220;The Drama&#8221;</div>
+            <div class="top-card-meta">2026 &#8212; 12 eps &#8212; TV show &#8212; new</div>
+            <div class="top-card-rating">
+              <span class="star">&#9733;</span>
+              <span>4.5</span>
+              <span class="count">(9k)</span>
+            </div>
+            <div class="top-card-actions">
+              <button class="btn-mark-watched">Mark as watched</button>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="top-card">
+          <div class="top-card-poster">
+            <a href="./html/movie_details.xhtml" >
+            <img src="https://placehold.co/400x225" alt="The Drama" />
+            </a>          </div>
+          <div class="top-card-body">
+            <div class="top-card-rank">#3</div>
+            <div class="top-card-title">&#8220;The Drama&#8221;</div>
+            <div class="top-card-meta">2026 &#8212; 12 eps &#8212; TV show &#8212; new</div>
+            <div class="top-card-rating">
+              <span class="star">&#9733;</span>
+              <span>4.5</span>
+              <span class="count">(9k)</span>
+            </div>
+            <div class="top-card-actions">
+              <button class="btn-mark-watched">Mark as watched</button>
+              <button class="btn-add">+</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- end top3-grid -->
+
+      <!-- #4 to #10 smaller posters -->
+      <div class="top-rest-grid">
+        <div class="top-rest-card">
+            <a href="./html/movie_details.xhtml" >
+            <img src="https://placehold.co/400x225" alt="The Drama" />
+            </a>          <span class="top-rest-rank">#4</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml" >
+          <img src="https://placehold.co/150x225" alt="Movie 5" />
+          </a>
+          <span class="top-rest-rank">#5</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml" >
+          <img src="https://placehold.co/150x225" alt="Movie 6" />
+          </a>
+          <span class="top-rest-rank">#6</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml">
+          <img src="https://placehold.co/150x225" alt="Movie 7" />
+          </a>
+          <span class="top-rest-rank">#7</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml">
+          <img src="https://placehold.co/150x225" alt="Movie 8" />
+          </a>
+          <span class="top-rest-rank">#8</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml">
+          <img src="https://placehold.co/150x225" alt="Movie 9" />
+          </a>
+          <span class="top-rest-rank">#9</span>
+        </div>
+        <div class="top-rest-card">
+          <a href="./html/movie_details.xhtml">
+          <img src="https://placehold.co/150x225" alt="Movie 10" />
+          </a>
+          <span class="top-rest-rank">#10</span>
+        </div>
+      </div>
+
+    </div>
+    <!-- end Top 10 -->
+
+    <!-- ── New to Movies ── -->
+    <div class="browse-row">
+      <div class="section-header">
+        <h2 class="browse-row-title">New to Movies</h2>
+        <a href="./html/new_to_movies.xhtml" class="section-link">See all</a>
+      </div>
+      <div class="poster-grid">
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+      </div>
+    </div>
+
+    <!-- ── From Your Watchlist ── -->
+    <div class="browse-row">
+      <div class="section-header">
+        <h2 class="browse-row-title">From Your Watchlist</h2>
+        <a href="./html/watchlist.xhtml" class="section-link">See all</a>
+      </div>
+      <div class="poster-grid">
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+        <div class="poster-item"><a href="./html/movie_details.xhtml"><img src="https://placehold.co/150x225" alt="Movie" /></a></div>
+      </div>
+    </div>
+
+    <!-- ── We Let You Section ── -->
+    <div class="features-section">
+      <h2 class="features-title">We let's you&#8230;</h2>
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9829;</div>
+          <div class="feature-text">
+            <h3>Like</h3>
+            <p>Like the movies and shows you enjoy and build your favourites list.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9733;</div>
+          <div class="feature-text">
+            <h3>Rate</h3>
+            <p>Give your honest rating to any movie or show you have watched.</p>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">&#9776;</div>
+          <div class="feature-text">
+            <h3>List</h3>
+            <p>Create and manage your personal watchlist and custom collections.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end features -->
+
+  </div>
+  <!-- end .page -->
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════ -->
+  <div class="footer">
+    <a href="index.xhtml" class="footer-logo">
+      <img src="./img/logo_croped.png" alt="Cinema Production logo" />
+      <span class="footer-logo-name">MOVIES</span>
+    </a>
+    <div class="footer-links">
+      <a href="index.xhtml" class="footer-link">Home</a>
+      <a href="watchlist.xhtml" class="footer-link">Watchlist</a>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       JAVASCRIPT — sidebar toggle
+       ════════════════════════════════════════ -->
+  <script type="text/javascript">
+    function openSidebar() {
+      document.getElementById('sidebar').className = 'sidebar open';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+    }
+    function closeSidebar() {
+      document.getElementById('sidebar').className = 'sidebar';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+    }
+  </script>
+
+</body>
+</html>

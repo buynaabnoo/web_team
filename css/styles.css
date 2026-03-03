@@ -16,15 +16,19 @@
   --border:       #e4e0da;
   --text:         #1a1714;
   --muted:        #7a746e;
-  --accent:       #2d5a8e;
-  --accent-light: #e8eef5;
+  --accent:       #6b35c2;       /* purple from logo */
+  --accent-dark:  #4e1f9e;       /* darker purple for hover */
+  --accent-light: #f0eafa;       /* light purple tint */
   --star:         #e8a020;
   --pill-border:  #c8c2bb;
   --card-bg:      #fdfcfb;
-  --badge-top:    #2d5a8e;
+  --badge-top:    #6b35c2;
   --badge-recent: #5a7a5a;
   --heart:        #c0435a;
-  --pill-bg:      #2d5a8e;
+  --pill-bg:      #6b35c2;
+  --nav-bg:       #ffffff;
+  --nav-border:   #e4e0da;
+  --nav-height:   60px;
 }
 
 /* ── Base ── */
@@ -34,16 +38,18 @@ body {
   color: var(--text);
   min-height: 100vh;
   padding: 0;
+  /* push content below fixed navbar */
+  padding-top: var(--nav-height);
 }
 
 .page {
-  max-width: 1080px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 28px 80px;
+  padding: 0px 28px 10px;
 }
 
 /* ── Typography ── */
-h1 {
+h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -69,7 +75,7 @@ h1 {
   margin: 4px 0 18px;
 }
 
-/* ── Poster placeholder (shared) ── */
+/* ── Movie poster card (shared) ── */
 .poster {
   background: #ddd8d0;
   border-radius: 10px;
@@ -79,10 +85,12 @@ h1 {
   overflow: hidden;
 }
 
-.poster svg {
-  opacity: 0.45;
-  width: 40px;
-  height: 40px;
+.poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
 }
 
 /* ── Review card (shared) ── */
@@ -129,9 +137,8 @@ h1 {
 
 /*
   ── Heart like button ──
-  The heart is added via CSS ::before so both pages always show
-  the exact same solid heart symbol (U+2665) regardless of what
-  character the HTML author typed. The HTML only contains the number.
+  Heart injected via CSS ::before so it is always the same
+  solid heart (U+2665) on every browser and every page.
 */
 .review-likes {
   display: flex;
@@ -149,13 +156,11 @@ h1 {
 }
 
 .review-likes::before {
-  content: '\2665'; /* ♥ solid heart — guaranteed same on every browser */
+  content: '\2665';
   font-size: 1rem;
 }
 
-.review-likes:hover {
-  opacity: 0.75;
-}
+.review-likes:hover { opacity: 0.75; }
 
 /* ── Badges ── */
 .badge {
@@ -180,7 +185,27 @@ h1 {
   letter-spacing: 0.02em;
 }
 
-/* ── Buttons ── */
+/* ── Shared buttons ── */
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 11px 24px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
 .btn-watchlist {
   background: var(--accent);
   color: #fff;
@@ -195,7 +220,7 @@ h1 {
 }
 
 .btn-watchlist:hover {
-  background: #244d7a;
+  background: var(--accent-dark);
   transform: translateY(-1px);
 }
 
@@ -227,12 +252,12 @@ h1 {
   font-size: 0.88rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-  width: 100%;
-  max-width: 440px;
   display: block;
   text-align: center;
   text-decoration: none;
+  width: 100%;
+  max-width: 440px;
+  transition: background 0.15s, border-color 0.15s;
 }
 
 .btn-see-all:hover {
@@ -254,7 +279,7 @@ h1 {
   font-family: 'DM Sans', sans-serif;
 }
 
-.info-link:hover { color: #1f4068; }
+.info-link:hover { color: var(--accent-dark); }
 
 .rate-link {
   color: var(--accent);
@@ -322,34 +347,314 @@ h1 {
 .see-all-wrap {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
-/* ── Focus styles (keyboard accessibility) ── */
+/* ════════════════════════════════════════════
+   NAVBAR — appears on every page
+   ════════════════════════════════════════════ */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--nav-border);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 16px;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.nav-logo img {
+  height: 36px;
+  width: auto;
+}
+
+.nav-logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* Menu button */
+.nav-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.nav-menu-btn:hover { background: var(--accent-light); }
+
+.nav-menu-btn span {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+/* Search bar */
+.nav-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 30px;
+  padding: 0 6px 0 14px;
+  gap: 6px;
+  max-width: 480px;
+}
+
+.nav-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text);
+  padding: 8px 0;
+  outline: none;
+}
+
+.nav-search-filter {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.nav-search-filter:hover { background: var(--accent-dark); }
+
+/* Right side nav links */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.nav-profile-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.nav-profile-btn:hover { background: var(--accent-dark); }
+
+.nav-link {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Language button */
+.nav-lang {
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.nav-lang:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Sidebar overlay ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1100;
+}
+
+.sidebar-overlay.open { display: block; }
+
+/* Sidebar panel */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100%;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  z-index: 1200;
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: left 0.25s ease;
+}
+
+.sidebar.open { left: 0; }
+
+.sidebar-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  color: var(--muted);
+  align-self: flex-end;
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.sidebar-close:hover { color: var(--text); }
+
+.sidebar-item {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar-item:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.sidebar-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 8px 0;
+}
+
+/* ════════════════════════════════════════════
+   FOOTER — appears on every page
+   ════════════════════════════════════════════ */
+.footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.footer-logo img {
+  height: 32px;
+  width: auto;
+}
+
+.footer-logo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-link {
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-link:hover { color: var(--accent); }
+
+/* ── Focus styles ── */
 button:focus-visible,
-.trailer:focus-visible {
+a:focus-visible,
+input:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* ── Touch devices: disable stuck hover states ── */
+/* ── Touch devices ── */
 @media (hover: none) {
   .trailer:hover           { filter: none; }
-  .trailer:hover .play-btn { transform: none; border-color: rgba(120,115,108,0.7); }
+  .trailer:hover .play-btn { transform: none; }
   .btn-watchlist:hover     { transform: none; }
   .genre-pill:hover        { background: none; border-color: var(--pill-border); color: var(--muted); }
   .review-card:hover       { box-shadow: none; }
 }
 
 /* ── Mobile shared ── */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
+  .navbar { padding: 0 16px; gap: 10px; }
+
+  .nav-logo-name { display: none; }
+
+  .nav-search { max-width: unset; }
+
+  .nav-link,
+  .nav-lang   { display: none; }
+
   .page        { padding: 20px 16px 60px; }
   .btn-see-all { max-width: 100%; padding: 14px 24px; font-size: 0.92rem; }
   .genre-pill  { padding: 6px 14px; font-size: 0.8rem; }
-}
 
-.movie-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  .footer { flex-direction: column; text-align: center; padding: 20px 16px; }
+  .footer-links { justify-content: center; }
 }

@@ -14,6 +14,50 @@
 </head>
 
 <body>
+
+<!-- ════════════════════════════════════════
+       SIDEBAR OVERLAY
+       ════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
+
+  <!-- ════════════════════════════════════════
+       SIDEBAR
+       ════════════════════════════════════════ -->
+  <div class="sidebar" id="sidebar">
+    <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+    <a href="#" class="sidebar-item">&#128269; Advanced Search</a>
+    <hr class="sidebar-divider" />
+    <a href="#" class="sidebar-item">&#128100; Profile</a>
+    <a href="watchlist.xhtml" class="sidebar-item">&#10003; Watchlist</a>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+       ════════════════════════════════════════ -->
+  <div class="navbar">
+
+    <a href="index.xhtml" class="nav-logo">
+      <img src="../img/logo_croped.png" alt="Cinema Production logo" />
+      <span class="nav-logo-name">Cinema Production</span>
+    </a>
+
+    <button class="nav-menu-btn" onclick="openSidebar()">
+      <span>&#9776;</span> Menu
+    </button>
+
+    <div class="nav-search">
+      <input type="text" placeholder="Search movies, shows..." />
+      <button class="nav-search-filter">All &#9650;</button>
+    </div>
+
+    <div class="nav-right">
+      <button class="nav-profile-btn">Profile</button>
+      <a href="watchlist.xhtml" class="nav-link">Watchlist</a>
+    </div>
+
+  </div>
+
+
 <div class="page">
 
   <!-- Header -->
