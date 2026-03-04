@@ -28,7 +28,7 @@
     <a href="#" class="sidebar-item">&#128269; Advanced Search</a>
     <hr class="sidebar-divider" />
     <a href="#" class="sidebar-item">&#128100; Profile</a>
-    <a href="watchlist.xhtml" class="sidebar-item">&#10003; Watchlist</a>
+    <a href="./watchlist.xhtml" class="sidebar-item">&#10003; Watchlist</a>
   </div>
 
   <!-- ════════════════════════════════════════
@@ -36,9 +36,9 @@
        ════════════════════════════════════════ -->
   <div class="navbar">
 
-    <a href="index.xhtml" class="nav-logo">
+    <a href="../index.xhtml" class="nav-logo">
       <img src="../img/logo_croped.png" alt="Cinema Production logo" />
-      <span class="nav-logo-name">Cinema Production</span>
+      <span class="nav-logo-name">Rately</span>
     </a>
 
     <button class="nav-menu-btn" onclick="openSidebar()">
@@ -172,5 +172,17 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+    function openSidebar() {
+      document.getElementById('sidebar').className = 'sidebar open';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+    }
+    function closeSidebar() {
+      document.getElementById('sidebar').className = 'sidebar';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+    }
+  </script>
+
 </body>
 </html>
