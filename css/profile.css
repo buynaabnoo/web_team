@@ -13,7 +13,7 @@ width:100%;
     justify-content:space-between;
     align-items:center;
     padding:25px;
-    background:#f2f2f2;
+    
 }
 
 .profile-left{
@@ -84,7 +84,7 @@ margin-right:20px;
 font-weight:bold;
 }
 
-.review-card{
+.review-box{
 display:flex;
 gap:20px;
 background:WHITE;
@@ -93,7 +93,7 @@ border-radius:10px;
 margin-bottom:15px;
 }
 
-.review-card img{
+.review-box img{
 width:150px;
 border-radius:5px;
 }
@@ -110,4 +110,18 @@ margin-top:20px;
 width:100%;
 border-radius:8px;
 height: 400px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.section-link {
+  font-size: 0.83rem;
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
