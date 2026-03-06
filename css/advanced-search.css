@@ -27,9 +27,11 @@
 
     /* ===== SEARCH HEADER ===== */
     .search-header {
-      text-align: center;
+      text-align: left;
       margin-bottom: var(--space-xl);
       animation: fadeInDown 0.6s ease-out;
+      margin: 20px auto 20px auto;
+      font-size: larger;
     }
 
     .search-header h1 {
@@ -70,6 +72,7 @@
       display: flex;
       flex-direction: column;
       gap: 8px;
+      padding: 5px;
     }
 
     .search-field label {
@@ -80,6 +83,7 @@
       display: flex;
       align-items: center;
       gap: 6px;
+      margin-left: 20px;
     }
 
     .search-field input,
@@ -121,8 +125,9 @@
 
     .genres-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: var(--space-sm);
+      gap: 12px;
     }
 
     .genre-checkbox {
@@ -193,10 +198,11 @@
     /* ===== SEARCH ACTIONS ===== */
     .search-actions {
       display: flex;
-      gap: var(--space-md);
+      gap: 20px;
       justify-content: center;
       flex-wrap: wrap;
       margin-top: var(--space-lg);
+      padding: 5px;
     }
 
     .search-btn {
@@ -217,6 +223,7 @@
       background: var(--search-accent);
       color: white;
       box-shadow: 0 8px 16px rgba(107, 53, 194, 0.3);
+      font-size: medium;
     }
 
     .search-btn-primary:hover {
@@ -249,6 +256,7 @@
       flex-wrap: wrap;
       gap: var(--space-sm);
       margin-bottom: var(--space-lg);
+      font-size: larger;
     }
 
     .results-header h2 {
@@ -269,7 +277,7 @@
     .results-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--space-lg);
+      gap: 20px;
     }
 
     .movie-card {
@@ -353,7 +361,7 @@
     }
 
     .movie-info {
-      padding: var(--space-md);
+      padding: 5px;
     }
 
     .movie-title {
