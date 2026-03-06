@@ -1,0 +1,113 @@
+body{
+padding: 0;
+margin: 0;
+background:#f7f7f7 ;
+}
+.profile-container{
+width:100%;
+
+}
+
+.profile-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px;
+    background:#f2f2f2;
+}
+
+.profile-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.profile-img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.profile-info h1{
+    margin:0;
+}
+
+.stats{
+    margin-top:5px;
+}
+
+.stats span{
+    margin-right:15px;
+    color:#444;
+}
+
+.profile-actions{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    padding:8px 16px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.edit{
+    background: #6b35c2;
+    color:white;
+}
+
+.follow{
+    background: #6b35c2;
+    color:white;
+}
+
+.message{
+    background: #6b35c2;
+    color: white;
+}
+
+.profile-img{
+width:120px;
+height:120px;
+border-radius:50%;
+}
+
+.profile-info h2{
+margin:0;
+}
+
+.stats span{
+margin-right:20px;
+font-weight:bold;
+}
+
+.review-card{
+display:flex;
+gap:20px;
+background:WHITE;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+}
+
+.review-card img{
+width:150px;
+border-radius:5px;
+}
+
+.movie-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:15px;
+margin-top:20px;
+
+}
+
+.movie-grid img{
+width:100%;
+border-radius:8px;
+height: 400px;
+}
