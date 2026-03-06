@@ -657,4 +657,10 @@ input:focus-visible {
 
   .footer { flex-direction: column; text-align: center; padding: 20px 16px; }
   .footer-links { justify-content: center; }
+
+  a.nav-profile-btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
 }
