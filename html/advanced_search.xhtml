@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Search · Rately</title>
+    <link rel="stylesheet" type="text/css"
+                href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" />
+    <link rel="stylesheet" type="text/css" href="../css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../css/advanced-search.css" />
+</head>
+
+<body class="search-page">
+
+    <!-- ════════════════════════════════════════
+             SIDEBAR OVERLAY
+             ════════════════════════════════════════ -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
+
+    <!-- ════════════════════════════════════════
+             SIDEBAR
+             ════════════════════════════════════════ -->
+    <div class="sidebar" id="sidebar">
+        <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+        <a href="advanced_search.xhtml" class="sidebar-item">Advanced Search</a>
+        <hr class="sidebar-divider" />
+        <a href="profile.xhtml" class="sidebar-item">Profile</a>
+        <a href="watchlist.xhtml" class="sidebar-item">Watchlist</a>
+    </div>
+
+    <!-- ════════════════════════════════════════
+             NAVBAR
+             ════════════════════════════════════════ -->
+    <div class="navbar">
+
+        <a href="../index.xhtml" class="nav-logo">
+            <img src="../img/logo_croped.png" alt="Cinema Production logo" />
+            <span class="nav-logo-name">Rately</span>
+        </a>
+
+        <button class="nav-menu-btn" onclick="openSidebar()">
+            <span>Menu</span>
+        </button>
+
+        <div class="nav-search">
+            <input type="text"/>
+            <button class="nav-search-filter">All</button>
+        </div>
+
+        <div class="nav-right">
+            <button class="nav-profile-btn">Profile</button>
+            <a href="./html/watchlist.xhtml" class="nav-link">Watchlist</a>
+        </div>
+
+    </div>
+
+    <div class="page">
+
+    <!-- MAIN SEARCH CONTENT -->
+    <div class="search-container">
+        
+        <!-- SEARCH HEADER -->
+        <div class="search-header">
+            <h1>Advanced Search</h1>
+        </div>
+
+        <!-- SEARCH FORM -->
+        <div class="search-form">
+            <div class="search-grid">
+                <!-- Movie Name -->
+                <div class="search-field">
+                    <label>
+                         Movie Name
+                    </label>
+                    <input type="text" placeholder="Example: Dune, Oppenheimer..." />
+                </div>
+
+                <!-- Year -->
+                <div class="search-field">
+                    <label>
+                        Year
+                    </label>
+                    <select>
+                        <option>All Years</option>
+                        <option>2024</option>
+                        <option>2023</option>
+                        <option>2022</option>
+                        <option>2021</option>
+                        <option>2020</option>
+                        <option>2010-2019</option>
+                        <option>2000-2009</option>
+                        <option>1990-1999</option>
+                    </select>
+                </div>
+
+                <!-- Rating -->
+                <div class="search-field">
+                    <label>
+                        <span>Rating</span>
+                    </label>
+                    <select>
+                        <option>All Ratings</option>
+                        <option>9+</option>
+                        <option>8+</option>
+                        <option>7+</option>
+                        <option>6+</option>
+                    </select>
+                </div>
+
+                <!-- Sort By -->
+                <div class="search-field">
+                    <label>
+                        <span>Sort By</span>
+                    </label>
+                    <select>
+                        <option>Rating (Ascending)</option>
+                        <option>Rating (Descending)</option>
+                        <option>Newly Added</option>
+                        <option>Oldest</option>
+                        <option>Name</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- SELECTABLE GENRES -->
+            <div class="genres-section">
+                <h3>Filter by Genre</h3>
+                <div class="genres-grid">
+                    <label class="genre-checkbox">
+                        <input type="checkbox" checked="checked" />
+                        <span>Action</span>
+                        <span class="count">245</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Drama</span>
+                        <span class="count">312</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" checked="checked" />
+                        <span>Science Fiction</span>
+                        <span class="count">156</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Comedy</span>
+                        <span class="count">278</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Horror</span>
+                        <span class="count">134</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" checked="checked" />
+                        <span>Romance</span>
+                        <span class="count">187</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Thriller</span>
+                        <span class="count">203</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Fantasy</span>
+                        <span class="count">98</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Documentary</span>
+                        <span class="count">67</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Kids</span>
+                        <span class="count">89</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Musical</span>
+                        <span class="count">45</span>
+                    </label>
+                    <label class="genre-checkbox">
+                        <input type="checkbox" />
+                        <span>Crime</span>
+                        <span class="count">112</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- SEARCH BUTTONS -->
+            <div class="search-actions">
+                <button class="search-btn search-btn-primary">
+                    <span>Search</span>
+                </button>
+                <button class="search-btn search-btn-secondary">
+                    <span>Clear Filters</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- RECOMMENDED MOVIES SECTION -->
+        <div class="results-section">
+            <div class="results-header">
+                <h2>Recommended</h2>
+                <span class="results-count">48 movies</span>
+            </div>
+
+            <!-- RECOMMENDED MOVIES GRID -->
+            <div class="results-grid">
+                <!-- Movie Card 1 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2024</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 2 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2023</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 3 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2023</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 4 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2023</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 5 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.5</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2022</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 6 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2022</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 7 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.4</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2024</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Movie Card 8 -->
+                <div class="movie-card">
+                    <div class="movie-poster">
+                        <img src="../img/placeholder.jpg" alt="Movie Poster" />
+                        <div class="movie-rating">
+                            <span>Rating</span>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                    <div class="movie-info">
+                        <h3 class="movie-title">Movie Name</h3>
+                        <div class="movie-year">2023</div>
+                        <div class="movie-genres">
+                            <span class="movie-genre-tag">Genre Tag</span>
+                            <span class="movie-genre-tag">Genre Tag</span>
+                        </div>
+                        <div class="movie-actions">
+                            <button class="movie-btn movie-btn-primary">Add to Watchlist</button>
+                            <button class="movie-btn movie-btn-secondary">Rate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+    function openSidebar() {
+      document.getElementById('sidebar').className = 'sidebar open';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+    }
+    function closeSidebar() {
+      document.getElementById('sidebar').className = 'sidebar';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+    }
+  </script>
+</body>
+</html>
