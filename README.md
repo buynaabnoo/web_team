@@ -14,3 +14,8 @@ yrnhido buh object uudig functionr bichne gesen ug.
 
 functseesee object uusgene.
 
+
+
+shud react.js ruge ory genee
+
+
