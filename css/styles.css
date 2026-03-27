@@ -646,7 +646,18 @@ input:focus-visible {
 
   .nav-logo-name { display: none; }
 
-  .nav-search { max-width: unset; }
+  .nav-search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    padding: 0 6px 0 14px;
+    gap: 6px;
+    max-width: unset;
+    width: 100%;  
+   }
 
   .nav-link,
   .nav-lang   { display: none; }

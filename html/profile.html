@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 1.0 Transitional//EN"
+"http://www.w3.org/TR/html1/DTD/html1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+<title>Movie Review Profile</title>
+<link rel="stylesheet" type="text/css" href="../css/profile.css" />
+<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+</head>
+
+<body>
+
+    <!-- ════════════════════════════════════════
+       SIDEBAR OVERLAY
+       ════════════════════════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
+
+  <!-- ════════════════════════════════════════
+       SIDEBAR
+       ════════════════════════════════════════ -->
+  <div class="sidebar" id="sidebar">
+    <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+    <a href="./advanced_search.html" class="sidebar-item">&#128269; Advanced Search</a>
+    <hr class="sidebar-divider" />
+    <a href="./profile.html" class="sidebar-item">&#128100; Profile</a>
+    <a href="./watchlist.html" class="sidebar-item">&#10003; Watchlist</a>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+       ════════════════════════════════════════ -->
+  <div class="navbar">
+
+    <a href="../index.html" class="nav-logo">
+      <img src="../img/logo_croped.png" alt="Cinema Production logo" />
+      <span class="nav-logo-name">Rately</span>
+    </a>
+
+    <button class="nav-menu-btn" onclick="openSidebar()">
+      <span>&#9776;</span> Menu
+    </button>
+
+    <div class="nav-search">
+      <input type="text"/>
+      <button class="nav-search-filter">All &#9650;</button>
+    </div>
+
+    <div class="nav-right">
+      <a href="./profile.html" class="nav-profile-btn">Profile</a>
+      <a href="watchlist.html" class="nav-link">Watchlist</a>
+    </div>
+
+  </div>
+
+    <div class="profile-header">
+
+  <div class="profile-left">
+      <img src="../img/profile_imgs/profile.jpg" class="profile-img">
+
+      <div class="profile-info">
+          <h1>Buynaa</h1>
+          <p>Movie lover</p>
+
+          <div class="stats">
+              <span><b>45</b> Reviews</span>
+              <span><b>120</b> Ratings</span>
+              <span><b>32</b> Followers</span>
+          </div>
+      </div>
+  </div>
+
+  <div class="profile-actions">
+      <button class="btn edit">Edit Profile</button>
+      <button class="btn follow">Follow</button>
+      <button class="btn message">Message</button>
+  </div>
+
+</div>
+
+
+
+<div class="reviews">
+
+<h1>My Reviews</h1>
+
+<div class="review-box">
+    <a href="movie_details.html">
+<img src="../img/profile_imgs/image2.jpg" alt="movie"/>
+    </a>
+<div>
+<h4>1990</h4>
+<p>⭐ 9/10</p>
+<p>ystoi goy kino boljee W.</p>
+</div>
+</div>
+
+<div class="review-box">
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image3.jpg" alt="movie"/>
+    </a>
+<div>
+<h4>MONGOL</h4>
+<p>⭐ 8/10</p>
+<p>Ystoil mongol hunii er zorigiig harulsan itgel naidvarin une tsene uv soyloo deedlemer setgegdel toruulsen goy kino. worth watching. recommentded.</p>
+</div>
+</div>
+
+</div>
+
+
+<div class="watchlist">
+
+<div class="section-header">
+    <h1 class="browse-row-title">Watchlist</h1>
+    <a href="./watchlist.html" class="section-link">See all</a>
+</div>
+
+<div class="movie-grid">
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image3.jpg" alt="movie"/>
+    </a>
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image4.jpg" alt="movie"/>
+    </a>
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image5.jpg" alt="movie"/>
+    </a>
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image6.jpg" alt="movie"/>
+    </a>
+    <a href="movie_details.html">
+        <img src="../img/profile_imgs/image8.jpg" alt="movie">
+    </a>
+</div>
+
+</div>
+
+</div>
+
+<script type="text/javascript">
+    function openSidebar() {
+      document.getElementById('sidebar').className = 'sidebar open';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+    }
+    function closeSidebar() {
+      document.getElementById('sidebar').className = 'sidebar';
+      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+    }
+  </script>
+
+</body>
+</html>

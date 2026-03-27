@@ -315,7 +315,7 @@
 
     .movie-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 30px 40px -15px rgba(107, 53, 194, 0.4);
+      box-shadow: 0 30px 40px -15px rgba(168, 164, 174, 0.4);
       border-color: var(--search-accent);
     }
 
