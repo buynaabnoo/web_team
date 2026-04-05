@@ -1,16 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD html 1.0 Transitional//EN"
-"http://www.w3.org/TR/html1/DTD/html1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/html">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Movie Review Profile</title>
-<link rel="stylesheet" type="text/css" href="../css/profile.css" />
-<link rel="stylesheet" type="text/css" href="../css/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Buynaa — Rately Profile</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/profile.css" />
 </head>
-
 <body>
 
-    <!-- ════════════════════════════════════════
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Edit Profile Modal -->
+  <div class="modal-overlay" id="editModal">
+    <div class="modal">
+      <button class="modal-close" id="editModalClose">&#215;</button>
+      <h3 class="modal-title">Edit Profile</h3>
+      <label class="modal-label">Name
+        <input class="modal-input" id="editName" type="text" />
+      </label>
+      <label class="modal-label">Bio
+        <input class="modal-input" id="editBio" type="text" />
+      </label>
+      <div class="modal-actions">
+        <button class="btn-profile-edit" id="editSave">Save Changes</button>
+        <button class="btn-profile-message" id="editCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message Modal -->
+  <div class="modal-overlay" id="msgModal">
+    <div class="modal">
+      <button class="modal-close" id="msgModalClose">&#215;</button>
+      <h3 class="modal-title">Message Buynaa</h3>
+      <label class="modal-label">Message
+        <textarea class="modal-input modal-textarea" id="msgText" placeholder="Write a message…"></textarea>
+      </label>
+      <div class="modal-actions">
+        <button class="btn-profile-edit" id="msgSend">Send</button>
+        <button class="btn-profile-message" id="msgCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
        SIDEBAR OVERLAY
        ════════════════════════════════════════ -->
   <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
@@ -19,134 +54,526 @@
        SIDEBAR
        ════════════════════════════════════════ -->
   <div class="sidebar" id="sidebar">
-    <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
-    <a href="./advanced_search.html" class="sidebar-item">&#128269; Advanced Search</a>
+    <div class="sidebar-top">
+      <span class="sidebar-brand">Rately</span>
+      <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+    </div>
+    <span class="sidebar-section">Browse</span>
+    <a href="/html/movies.html" class="sidebar-item">&#127916; Movies</a>
+    <a href="/html/reviews.html" class="sidebar-item">&#9733; Reviews</a>
     <hr class="sidebar-divider" />
-    <a href="./profile.html" class="sidebar-item">&#128100; Profile</a>
-    <a href="./watchlist.html" class="sidebar-item">&#10003; Watchlist</a>
+    <span class="sidebar-section">My Rately</span>
+    <a href="/html/watchlist.html" class="sidebar-item">&#9997; Watchlist</a>
+    <a href="/html/profile.html" class="sidebar-item">&#128100; Profile</a>
+    <hr class="sidebar-divider" />
+    <a href="/html/advanced_search.html" class="sidebar-item">&#128269; Advanced Search</a>
+    <a href="/html/login.xhtml" class="sidebar-item">&#128274; Sign In</a>
   </div>
 
   <!-- ════════════════════════════════════════
        NAVBAR
        ════════════════════════════════════════ -->
-  <div class="navbar">
-
-    <a href="../index.html" class="nav-logo">
-      <img src="../img/logo_croped.png" alt="Cinema Production logo" />
+  <nav class="navbar" id="mainNav">
+    <a href="/index.html" class="nav-logo">
+      <img src="../img/logo_croped.png" alt="Rately" />
       <span class="nav-logo-name">Rately</span>
     </a>
 
-    <button class="nav-menu-btn" onclick="openSidebar()">
-      <span>&#9776;</span> Menu
-    </button>
+    <ul class="nav-links">
+      <li><a href="/html/movies.html" class="nav-item">Movies</a></li>
+      <li><a href="/html/reviews.html" class="nav-item">Reviews</a></li>
+      <li class="nav-has-dropdown">
+        <button class="nav-item nav-dropdown-trigger">Browse <span class="nav-chevron">&#9660;</span></button>
+        <div class="nav-dropdown-panel">
+          <a href="/html/movies.html?genre=action" class="nav-dropdown-item">Action</a>
+          <a href="/html/movies.html?genre=drama" class="nav-dropdown-item">Drama</a>
+          <a href="/html/movies.html?genre=comedy" class="nav-dropdown-item">Comedy</a>
+          <a href="/html/movies.html?genre=thriller" class="nav-dropdown-item">Thriller</a>
+          <a href="/html/movies.html?genre=sci-fi" class="nav-dropdown-item">Sci-Fi</a>
+          <a href="/html/movies.html?genre=romance" class="nav-dropdown-item">Romance</a>
+          <a href="/html/movies.html?genre=fantasy" class="nav-dropdown-item">Fantasy</a>
+        </div>
+      </li>
+    </ul>
 
-    <div class="nav-search">
-      <input type="text"/>
-      <button class="nav-search-filter">All &#9650;</button>
-    </div>
+    <form class="nav-search" action="/html/movies.html" method="get">
+      <input type="text" name="search" placeholder="Search movies, shows…" />
+      <button type="submit" class="nav-search-btn">Search</button>
+    </form>
 
     <div class="nav-right">
-      <a href="./profile.html" class="nav-profile-btn">Profile</a>
-      <a href="watchlist.html" class="nav-link">Watchlist</a>
+      <a href="/html/watchlist.html" class="nav-watchlist-link">
+        Watchlist <span class="nav-badge" id="navWlBadge"></span>
+      </a>
+      <a href="/html/profile.html" class="nav-avatar-btn" id="navAvatar">B</a>
+      <a href="/html/login.xhtml" class="nav-signin-btn">Sign In</a>
     </div>
 
-  </div>
+    <button class="nav-hamburger" onclick="openSidebar()">&#9776;</button>
+  </nav>
 
-    <div class="profile-header">
+  <!-- ════════════════════════════════════════
+       PROFILE HERO
+       ════════════════════════════════════════ -->
+  <div class="profile-hero">
+    <div class="profile-banner"></div>
+    <div class="profile-identity">
+      <img class="profile-avatar" src="../img/profile_imgs/profile.jpg" alt="Buynaa" />
 
-  <div class="profile-left">
-      <img src="../img/profile_imgs/profile.jpg" class="profile-img">
-
-      <div class="profile-info">
-          <h1>Buynaa</h1>
-          <p>Movie lover</p>
-
-          <div class="stats">
-              <span><b>45</b> Reviews</span>
-              <span><b>120</b> Ratings</span>
-              <span><b>32</b> Followers</span>
+      <div class="profile-meta">
+        <h1 class="profile-name" id="profileName">Buynaa</h1>
+        <p class="profile-bio" id="profileBio">Movie lover &middot; Mongolian cinema enthusiast</p>
+        <div class="profile-stats">
+          <div class="stat-item">
+            <span class="stat-num" id="statReviews">2</span>
+            <span class="stat-label">Reviews</span>
           </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" id="statRatings">0</span>
+            <span class="stat-label">Ratings</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num" id="statWatchlist">0</span>
+            <span class="stat-label">Watchlist</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-num">32</span>
+            <span class="stat-label">Followers</span>
+          </div>
+        </div>
       </div>
+
+      <div class="profile-actions">
+        <button class="btn-profile-edit" id="btnEdit">Edit Profile</button>
+        <button class="btn-profile-follow" id="btnFollow">Follow</button>
+        <button class="btn-profile-message" id="btnMessage">Message</button>
+      </div>
+    </div>
   </div>
 
-  <div class="profile-actions">
-      <button class="btn edit">Edit Profile</button>
-      <button class="btn follow">Follow</button>
-      <button class="btn message">Message</button>
-  </div>
+  <!-- ════════════════════════════════════════
+       PROFILE TABS
+       ════════════════════════════════════════ -->
+  <nav class="profile-tabs">
+    <div class="profile-tabs-inner">
+      <button class="tab active" data-section="overview">Overview</button>
+      <button class="tab" data-section="reviews">Reviews <span class="tab-count" id="tcReviews">2</span></button>
+      <button class="tab" data-section="ratings">Ratings <span class="tab-count" id="tcRatings">0</span></button>
+      <button class="tab" data-section="watchlist">Watchlist <span class="tab-count" id="tcWatchlist">0</span></button>
+    </div>
+  </nav>
 
-</div>
+  <!-- ════════════════════════════════════════
+       PROFILE BODY
+       ════════════════════════════════════════ -->
+  <div class="profile-body page">
 
+    <!-- ── OVERVIEW ── -->
+    <section class="tab-section active" id="section-overview">
 
+      <div class="section-header">
+        <h2 class="section-title">Recent Reviews</h2>
+        <button class="tab-link" data-switch="reviews">See all</button>
+      </div>
 
-<div class="reviews">
+      <div class="reviews-list" id="reviews-list-overview">
+        <!-- populated by JS -->
+      </div>
 
-<h1>My Reviews</h1>
+      <div class="section-header" style="margin-top:40px">
+        <h2 class="section-title">Watchlist</h2>
+        <button class="tab-link" data-switch="watchlist">See all</button>
+      </div>
 
-<div class="review-box">
-    <a href="movie_details.html">
-<img src="../img/profile_imgs/image2.jpg" alt="movie"/>
-    </a>
-<div>
-<h4>1990</h4>
-<p>⭐ 9/10</p>
-<p>ystoi goy kino boljee W.</p>
-</div>
-</div>
+      <div class="watchlist-grid" id="watchlist-grid-overview">
+        <!-- populated by JS -->
+      </div>
 
-<div class="review-box">
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image3.jpg" alt="movie"/>
-    </a>
-<div>
-<h4>MONGOL</h4>
-<p>⭐ 8/10</p>
-<p>Ystoil mongol hunii er zorigiig harulsan itgel naidvarin une tsene uv soyloo deedlemer setgegdel toruulsen goy kino. worth watching. recommentded.</p>
-</div>
-</div>
+    </section>
 
-</div>
+    <!-- ── REVIEWS ── -->
+    <section class="tab-section" id="section-reviews">
+      <div class="section-header">
+        <h2 class="section-title">All Reviews</h2>
+      </div>
+      <div class="reviews-list" id="reviews-list-tab">
+        <!-- populated by JS -->
+      </div>
+    </section>
 
+    <!-- ── RATINGS ── -->
+    <section class="tab-section" id="section-ratings">
+      <div class="section-header">
+        <h2 class="section-title">Your Ratings</h2>
+        <span class="section-note">Click stars to rate</span>
+      </div>
+      <div class="ratings-grid" id="ratings-grid">
+        <div class="loading-state">Loading movies…</div>
+      </div>
+    </section>
 
-<div class="watchlist">
+    <!-- ── WATCHLIST ── -->
+    <section class="tab-section" id="section-watchlist">
+      <div class="section-header">
+        <h2 class="section-title">Watchlist</h2>
+        <a href="./watchlist.html" class="section-link">Manage watchlist</a>
+      </div>
+      <div class="watchlist-grid" id="watchlist-grid-tab">
+        <!-- populated by JS -->
+      </div>
+    </section>
 
-<div class="section-header">
-    <h1 class="browse-row-title">Watchlist</h1>
-    <a href="./watchlist.html" class="section-link">See all</a>
-</div>
+  </div><!-- /.profile-body -->
 
-<div class="movie-grid">
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image3.jpg" alt="movie"/>
-    </a>
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image4.jpg" alt="movie"/>
-    </a>
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image5.jpg" alt="movie"/>
-    </a>
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image6.jpg" alt="movie"/>
-    </a>
-    <a href="movie_details.html">
-        <img src="../img/profile_imgs/image8.jpg" alt="movie">
-    </a>
-</div>
+  <script>
+  // ─── Config ───────────────────────────────────────────
+  var API_URL = 'https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495';
+  var API_KEY = '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS';
 
-</div>
+  var LS = {
+    WATCHLIST : 'rately_watchlist',   // number[]
+    RATINGS   : 'rately_ratings',     // { id: starCount }
+    HELPFUL   : 'rately_helpful',     // { reviewId: bool }
+    PROFILE   : 'rately_profile',     // { name, bio }
+    FOLLOWING : 'rately_following'    // bool
+  };
 
-</div>
+  // ─── LocalStorage helpers ──────────────────────────────
+  function lsGet(key, fallback) {
+    try { return JSON.parse(localStorage.getItem(key)) || fallback; }
+    catch(e) { return fallback; }
+  }
+  function lsSet(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
-<script type="text/javascript">
-    function openSidebar() {
-      document.getElementById('sidebar').className = 'sidebar open';
-      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+  // ─── Static review data ────────────────────────────────
+  var REVIEWS = [
+    {
+      id: 'r1',
+      movieTitle: '1990',
+      movieYear: '1990',
+      poster: '../img/profile_imgs/image2.jpg',
+      movieHref: 'movie_details.html',
+      rating: 9,
+      text: 'ystoi goy kino boljee W. Mongolian cinema at its finest — raw emotion and incredible performances throughout.',
+      helpful: 12,
+      date: 'Jan 2024'
+    },
+    {
+      id: 'r2',
+      movieTitle: 'Mongol',
+      movieYear: '2007',
+      poster: '../img/profile_imgs/image3.jpg',
+      movieHref: 'movie_details.html',
+      rating: 8,
+      text: 'Ystoil mongol hunii er zorigiig harulsan itgel naidvarin une tsene uv soyloo deedlemer setgegdel toruulsen goy kino. Worth watching. Recommended.',
+      helpful: 24,
+      date: 'Mar 2024'
     }
-    function closeSidebar() {
-      document.getElementById('sidebar').className = 'sidebar';
-      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+  ];
+
+  // ─── Toast ────────────────────────────────────────────
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function() { t.classList.remove('show'); }, 3000);
+  }
+
+  // ─── Modal helpers ────────────────────────────────────
+  function openModal(id) { document.getElementById(id).classList.add('open'); }
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+
+  // ─── Update stat counters ──────────────────────────────
+  function updateStats() {
+    var watchlist = lsGet(LS.WATCHLIST, []);
+    var ratings   = lsGet(LS.RATINGS, {});
+    var wCount    = watchlist.length;
+    var rCount    = Object.keys(ratings).length;
+
+    document.getElementById('statWatchlist').textContent = wCount;
+    document.getElementById('statRatings').textContent   = rCount;
+    document.getElementById('tcWatchlist').textContent   = wCount;
+    document.getElementById('tcRatings').textContent     = rCount;
+  }
+
+  // ─── Review card HTML ──────────────────────────────────
+  function reviewCardHTML(r) {
+    var helpful = lsGet(LS.HELPFUL, {});
+    var count   = helpful['count_' + r.id] !== undefined ? helpful['count_' + r.id] : r.helpful;
+    var voted   = !!helpful[r.id];
+    return '<div class="review-card-imdb">' +
+      '<a href="' + r.movieHref + '" class="review-poster-link">' +
+        '<img class="review-poster" src="' + r.poster + '" alt="' + r.movieTitle + '" />' +
+      '</a>' +
+      '<div class="review-content">' +
+        '<div class="review-title-row">' +
+          '<h4 class="review-title">' + r.movieTitle + '</h4>' +
+          '<span class="review-year">' + r.movieYear + '</span>' +
+        '</div>' +
+        '<div class="review-rating">' +
+          '<span class="star-icon">&#9733;</span>' +
+          '<span class="rating-value">' + r.rating + '</span>' +
+          '<span class="rating-max">/10</span>' +
+        '</div>' +
+        '<p class="review-text">' + r.text + '</p>' +
+        '<div class="review-meta-row">' +
+          '<button class="review-helpful' + (voted ? ' voted' : '') + '" ' +
+            'data-review-id="' + r.id + '" data-count="' + count + '" ' +
+            'onclick="toggleHelpful(this)">&#128077; ' + count + ' helpful</button>' +
+          '<span class="review-date">' + r.date + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderReviews() {
+    var html = REVIEWS.map(reviewCardHTML).join('');
+    var ov = document.getElementById('reviews-list-overview');
+    var tb = document.getElementById('reviews-list-tab');
+    if (ov) ov.innerHTML = html;
+    if (tb) tb.innerHTML = html;
+  }
+
+  // ─── Helpful vote toggle ──────────────────────────────
+  function toggleHelpful(btn) {
+    var rid   = btn.dataset.reviewId;
+    var count = parseInt(btn.dataset.count);
+    var helpful = lsGet(LS.HELPFUL, {});
+
+    if (helpful[rid]) {
+      helpful[rid] = false;
+      count--;
+      btn.classList.remove('voted');
+    } else {
+      helpful[rid] = true;
+      count++;
+      btn.classList.add('voted');
     }
+    helpful['count_' + rid] = count;
+    lsSet(LS.HELPFUL, helpful);
+    btn.dataset.count = count;
+    btn.innerHTML = '&#128077; ' + count + ' helpful';
+  }
+
+  // ─── Watchlist card HTML ──────────────────────────────
+  function watchCardHTML(m) {
+    return '<div class="watch-card" data-id="' + m.id + '">' +
+      '<a href="movie_details.html?id=' + m.id + '">' +
+        '<img src="' + m.poster + '" alt="' + m.title + '" />' +
+        '<div class="watch-overlay">' +
+          '<div class="watch-info">' +
+            '<span class="watch-title">' + m.title + '</span>' +
+            '<span class="watch-rating">&#9733; ' + m.rating + '</span>' +
+          '</div>' +
+          '<button class="watch-remove" onclick="removeFromWatchlist(event,' + m.id + ')">&#8722; Remove</button>' +
+        '</div>' +
+      '</a>' +
+    '</div>';
+  }
+
+  function renderWatchlistGrids(allMovies) {
+    var ids = lsGet(LS.WATCHLIST, []);
+    var movies = ids.length
+      ? allMovies.filter(function(m) { return ids.indexOf(m.id) !== -1; })
+      : allMovies.slice(0, 5);
+
+    var html = movies.slice(0, 8).map(watchCardHTML).join('');
+    if (!html) html = '<p class="empty-state">Your watchlist is empty. Browse movies to add some!</p>';
+
+    var ov = document.getElementById('watchlist-grid-overview');
+    var tb = document.getElementById('watchlist-grid-tab');
+    if (ov) ov.innerHTML = html;
+    if (tb) tb.innerHTML = html;
+    updateStats();
+  }
+
+  function removeFromWatchlist(e, id) {
+    e.preventDefault();
+    var ids = lsGet(LS.WATCHLIST, []).filter(function(i) { return i !== id; });
+    lsSet(LS.WATCHLIST, ids);
+    renderWatchlistGrids(window._allMovies || []);
+    showToast('Removed from watchlist');
+  }
+
+  // ─── Ratings card HTML ────────────────────────────────
+  function ratingCardHTML(m) {
+    var ratings = lsGet(LS.RATINGS, {});
+    var userRating = ratings[m.id] || 0;
+    var stars = [1,2,3,4,5].map(function(n) {
+      return '<button class="star-btn' + (userRating >= n ? ' active' : '') + '" ' +
+        'data-val="' + n + '" onclick="rateMovie(event,' + m.id + ',' + n + ')">&#9733;</button>';
+    }).join('');
+    return '<div class="rating-item" data-id="' + m.id + '">' +
+      '<a href="movie_details.html?id=' + m.id + '">' +
+        '<img src="' + m.poster + '" alt="' + m.title + '" />' +
+      '</a>' +
+      '<div class="rating-item-info">' +
+        '<span class="rating-item-title">' + m.title + '</span>' +
+        '<span class="rating-item-year">' + m.year + '</span>' +
+        '<div class="star-rate" data-id="' + m.id + '">' + stars + '</div>' +
+        (userRating ? '<span class="user-rating-label">Your rating: ' + userRating + '/5</span>' : '<span class="user-rating-label muted">Tap to rate</span>') +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderRatingsGrid(allMovies) {
+    var el = document.getElementById('ratings-grid');
+    if (!el) return;
+    var movies = allMovies.slice(0, 8);
+    el.innerHTML = movies.map(ratingCardHTML).join('');
+    updateStats();
+  }
+
+  function rateMovie(e, id, rating) {
+    e.preventDefault();
+    var ratings = lsGet(LS.RATINGS, {});
+    if (ratings[id] === rating) {
+      delete ratings[id];
+    } else {
+      ratings[id] = rating;
+    }
+    lsSet(LS.RATINGS, ratings);
+    // Re-render the card
+    var card = e.target.closest('.rating-item');
+    if (card && window._allMovies) {
+      var movie = window._allMovies.find(function(m) { return m.id === id; });
+      if (movie) card.outerHTML = ratingCardHTML(movie);
+    }
+    updateStats();
+    showToast(ratings[id] ? 'Rated ' + ratings[id] + '/5 ★' : 'Rating removed');
+  }
+
+  // ─── Profile edit ─────────────────────────────────────
+  function initProfile() {
+    var p = lsGet(LS.PROFILE, { name: 'Buynaa', bio: 'Movie lover · Mongolian cinema enthusiast' });
+    document.getElementById('profileName').textContent = p.name;
+    document.getElementById('profileBio').textContent  = p.bio;
+  }
+
+  document.getElementById('btnEdit').addEventListener('click', function() {
+    var p = lsGet(LS.PROFILE, { name: 'Buynaa', bio: 'Movie lover · Mongolian cinema enthusiast' });
+    document.getElementById('editName').value = p.name;
+    document.getElementById('editBio').value  = p.bio;
+    openModal('editModal');
+  });
+
+  document.getElementById('editSave').addEventListener('click', function() {
+    var name = document.getElementById('editName').value.trim();
+    var bio  = document.getElementById('editBio').value.trim();
+    if (!name) return;
+    lsSet(LS.PROFILE, { name: name, bio: bio });
+    document.getElementById('profileName').textContent = name;
+    document.getElementById('profileBio').textContent  = bio;
+    closeModal('editModal');
+    showToast('Profile updated!');
+  });
+
+  document.getElementById('editCancel').addEventListener('click', function() { closeModal('editModal'); });
+  document.getElementById('editModalClose').addEventListener('click', function() { closeModal('editModal'); });
+
+  // ─── Follow toggle ────────────────────────────────────
+  function initFollow() {
+    var btn = document.getElementById('btnFollow');
+    if (lsGet(LS.FOLLOWING, false)) {
+      btn.textContent = '&#10003; Following';
+      btn.classList.add('following');
+    }
+  }
+
+  document.getElementById('btnFollow').addEventListener('click', function() {
+    var isFollowing = lsGet(LS.FOLLOWING, false);
+    lsSet(LS.FOLLOWING, !isFollowing);
+    if (!isFollowing) {
+      this.innerHTML = '&#10003; Following';
+      this.classList.add('following');
+      showToast('You are now following Buynaa!');
+    } else {
+      this.textContent = 'Follow';
+      this.classList.remove('following');
+      showToast('Unfollowed Buynaa');
+    }
+  });
+
+  // ─── Message ──────────────────────────────────────────
+  document.getElementById('btnMessage').addEventListener('click', function() {
+    document.getElementById('msgText').value = '';
+    openModal('msgModal');
+  });
+
+  document.getElementById('msgSend').addEventListener('click', function() {
+    var text = document.getElementById('msgText').value.trim();
+    if (!text) return;
+    closeModal('msgModal');
+    showToast('Message sent to Buynaa!');
+  });
+
+  document.getElementById('msgCancel').addEventListener('click', function() { closeModal('msgModal'); });
+  document.getElementById('msgModalClose').addEventListener('click', function() { closeModal('msgModal'); });
+
+  // Close modals on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(function(overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+
+  // ─── Tabs ─────────────────────────────────────────────
+  document.querySelectorAll('.tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var section = this.dataset.section;
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.tab-section').forEach(function(s) { s.classList.remove('active'); });
+      this.classList.add('active');
+      document.getElementById('section-' + section).classList.add('active');
+    });
+  });
+
+  document.querySelectorAll('.tab-link').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = this.dataset.switch;
+      document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.tab-section').forEach(function(s) { s.classList.remove('active'); });
+      document.querySelector('.tab[data-section="' + target + '"]').classList.add('active');
+      document.getElementById('section-' + target).classList.add('active');
+    });
+  });
+
+  // ─── Sidebar ──────────────────────────────────────────
+  function openSidebar() {
+    document.getElementById('sidebar').className = 'sidebar open';
+    document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').className = 'sidebar';
+    document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+  }
+
+  // ─── Boot ─────────────────────────────────────────────
+  initProfile();
+  initFollow();
+  renderReviews();
+  updateStats();
+
+  fetch(API_URL, { headers: { 'X-Master-Key': API_KEY } })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var movies = data.record.movies;
+      window._allMovies = movies;
+      renderWatchlistGrids(movies);
+      renderRatingsGrid(movies);
+    })
+    .catch(function() {
+      document.getElementById('watchlist-grid-overview').innerHTML =
+        '<p class="empty-state">Could not load movies.</p>';
+      document.getElementById('ratings-grid').innerHTML =
+        '<p class="empty-state">Could not load movies.</p>';
+    });
   </script>
+  <script src="/js/navbar.js"></script>
 
 </body>
 </html>

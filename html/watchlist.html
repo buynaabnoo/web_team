@@ -1,144 +1,491 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD html 1.0 Transitional//EN"
-  "http://www.w3.org/TR/html1/DTD/html1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/html" xml:lang="en" lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Watchlist</title>
-  <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
-  <link rel="stylesheet" type="text/css" href="../css/styles.css" />
-  <link rel="stylesheet" type="text/css" href="../css/watchlist.css" />
+  <title>My Watchlist — Rately</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500;600&display=swap" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/watchlist.css" />
 </head>
-
 <body>
 
-<!-- ════════════════════════════════════════
-       SIDEBAR OVERLAY
-       ════════════════════════════════════════ -->
-  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
-  <!-- ════════════════════════════════════════
-       SIDEBAR
-       ════════════════════════════════════════ -->
+  <!-- ════════════════════ SIDEBAR ════════════════════ -->
+  <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()">&#160;</div>
   <div class="sidebar" id="sidebar">
-    <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
-    <a href="./advanced_search.html" class="sidebar-item">&#128269; Advanced Search</a>
+    <div class="sidebar-top">
+      <span class="sidebar-brand">Rately</span>
+      <button class="sidebar-close" onclick="closeSidebar()">&#215;</button>
+    </div>
+    <span class="sidebar-section">Browse</span>
+    <a href="/html/movies.html" class="sidebar-item">&#127916; Movies</a>
+    <a href="/html/reviews.html" class="sidebar-item">&#9733; Reviews</a>
     <hr class="sidebar-divider" />
-    <a href="./profile.html" class="sidebar-item">&#128100; Profile</a>
-    <a href="./watchlist.html" class="sidebar-item">&#10003; Watchlist</a>
+    <span class="sidebar-section">My Rately</span>
+    <a href="/html/watchlist.html" class="sidebar-item">&#9997; Watchlist</a>
+    <a href="/html/profile.html" class="sidebar-item">&#128100; Profile</a>
+    <hr class="sidebar-divider" />
+    <a href="/html/advanced_search.html" class="sidebar-item">&#128269; Advanced Search</a>
+    <a href="/html/login.xhtml" class="sidebar-item">&#128274; Sign In</a>
   </div>
 
-  <!-- ════════════════════════════════════════
-       NAVBAR
-       ════════════════════════════════════════ -->
-  <div class="navbar">
-
-    <a href="../index.html" class="nav-logo">
-      <img src="../img/logo_croped.png" alt="Cinema Production logo" />
+  <!-- ════════════════════ NAVBAR ════════════════════ -->
+  <nav class="navbar" id="mainNav">
+    <a href="/index.html" class="nav-logo">
+      <img src="../img/logo_croped.png" alt="Rately" />
       <span class="nav-logo-name">Rately</span>
     </a>
 
-    <button class="nav-menu-btn" onclick="openSidebar()">
-      <span>&#9776;</span> Menu
-    </button>
+    <ul class="nav-links">
+      <li><a href="/html/movies.html" class="nav-item">Movies</a></li>
+      <li><a href="/html/reviews.html" class="nav-item">Reviews</a></li>
+      <li class="nav-has-dropdown">
+        <button class="nav-item nav-dropdown-trigger">Browse <span class="nav-chevron">&#9660;</span></button>
+        <div class="nav-dropdown-panel">
+          <a href="/html/movies.html?genre=action" class="nav-dropdown-item">Action</a>
+          <a href="/html/movies.html?genre=drama" class="nav-dropdown-item">Drama</a>
+          <a href="/html/movies.html?genre=comedy" class="nav-dropdown-item">Comedy</a>
+          <a href="/html/movies.html?genre=thriller" class="nav-dropdown-item">Thriller</a>
+          <a href="/html/movies.html?genre=sci-fi" class="nav-dropdown-item">Sci-Fi</a>
+          <a href="/html/movies.html?genre=romance" class="nav-dropdown-item">Romance</a>
+          <a href="/html/movies.html?genre=fantasy" class="nav-dropdown-item">Fantasy</a>
+        </div>
+      </li>
+    </ul>
 
-    <div class="nav-search">
-      <input type="text"/>
-      <button class="nav-search-filter">All &#9650;</button>
-    </div>
+    <form class="nav-search" action="/html/movies.html" method="get">
+      <input type="text" name="search" placeholder="Search movies, shows…" />
+      <button type="submit" class="nav-search-btn">Search</button>
+    </form>
 
     <div class="nav-right">
-      <a href="./profile.html" class="nav-profile-btn">Profile</a>
-      <a href="watchlist.html" class="nav-link">Watchlist</a>
-    </div>
-
-  </div>
-
-
-<div class="page">
-
-  <h1>Watchlist</h1>
-
-  <!-- Movie grid -->
-  <div class="movie-grid">
-
-    <div class="movie-card">
-        <a href="movie_details.html">
-      <img src="../img/princess-khutulun-movie-poster.webp" alt="Movie Poster" />
-        </a>
-    </div>
-
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
+      <a href="/html/watchlist.html" class="nav-watchlist-link">
+        Watchlist <span class="nav-badge" id="navWlBadge"></span>
       </a>
+      <a href="/html/profile.html" class="nav-avatar-btn" id="navAvatar">B</a>
+      <a href="/html/login.xhtml" class="nav-signin-btn">Sign In</a>
     </div>
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
+    <button class="nav-hamburger" onclick="openSidebar()">&#9776;</button>
+  </nav>
+
+  <!-- ════════════════════ PAGE ════════════════════ -->
+  <div class="page">
+
+    <!-- Page Header -->
+    <div class="wl-header">
+      <div>
+        <h1 class="wl-title">My Watchlist</h1>
+        <p class="wl-subtitle">Movies &amp; shows you plan to watch</p>
+      </div>
+      <div class="wl-view-toggle">
+        <button class="view-btn active" id="btnGrid" title="Grid view" onclick="setView('grid')">
+          &#9632;&#9632;&#9632;&#9632;
+        </button>
+        <button class="view-btn" id="btnList" title="List view" onclick="setView('list')">
+          &#9776;
+        </button>
+      </div>
     </div>
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
+    <!-- Progress bar -->
+    <div class="wl-progress-wrap">
+      <div class="wl-stats">
+        <span class="wl-stat"><span class="wl-stat-num" id="statTotal">0</span> saved</span>
+        <span class="wl-stat-sep">·</span>
+        <span class="wl-stat"><span class="wl-stat-num wl-stat-watched" id="statWatched">0</span> watched</span>
+        <span class="wl-stat-sep">·</span>
+        <span class="wl-stat"><span class="wl-stat-num" id="statLeft">0</span> remaining</span>
+      </div>
+      <div class="wl-progress-bar">
+        <div class="wl-progress-fill" id="progressFill"></div>
+      </div>
     </div>
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
+    <!-- Controls -->
+    <div class="wl-controls">
+      <div class="wl-filters">
+        <select class="wl-select" id="filterGenre" onchange="applyFilters()">
+          <option value="">All Genres</option>
+          <option value="drama">Drama</option>
+          <option value="action">Action</option>
+          <option value="comedy">Comedy</option>
+          <option value="thriller">Thriller</option>
+          <option value="romance">Romance</option>
+          <option value="horror">Horror</option>
+          <option value="sci-fi">Sci-Fi</option>
+          <option value="adventure">Adventure</option>
+          <option value="mystery">Mystery</option>
+          <option value="fantasy">Fantasy</option>
+        </select>
+        <select class="wl-select" id="filterType" onchange="applyFilters()">
+          <option value="">All Types</option>
+          <option value="Movie">Movies</option>
+          <option value="TV show">TV Shows</option>
+        </select>
+        <select class="wl-select" id="sortBy" onchange="applyFilters()">
+          <option value="added">Sort: Date Added</option>
+          <option value="title">Sort: Title A–Z</option>
+          <option value="rating_desc">Sort: Rating ↓</option>
+          <option value="rating_asc">Sort: Rating ↑</option>
+          <option value="year_desc">Sort: Newest</option>
+        </select>
+      </div>
+      <div class="wl-filter-actions">
+        <button class="wl-filter-pill active" id="filterAll" onclick="setStatusFilter('all')">All</button>
+        <button class="wl-filter-pill" id="filterUnseen" onclick="setStatusFilter('unseen')">Unseen</button>
+        <button class="wl-filter-pill" id="filterWatched" onclick="setStatusFilter('watched')">Watched</button>
+      </div>
     </div>
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
+    <!-- Watchlist grid / list -->
+    <div class="wl-grid" id="wlGrid">
+      <div class="wl-loading">Loading your watchlist…</div>
     </div>
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
+    <!-- Empty state -->
+    <div class="wl-empty" id="wlEmpty" style="display:none">
+      <div class="wl-empty-icon">&#127916;</div>
+      <h2>Your watchlist is empty</h2>
+      <p>Save movies and shows you want to watch later. Browse below to get started.</p>
+      <a href="./movies.html" class="btn-browse">Browse Movies</a>
     </div>
 
-    <div class="movie-card">
-        <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-        </a>
+    <!-- Discover section -->
+    <div id="discoverSection">
+      <div class="discover-header">
+        <h2 class="section-title">Discover &amp; Add</h2>
+        <p class="discover-sub">Add movies from the catalogue to your watchlist</p>
+      </div>
+      <div class="discover-grid" id="discoverGrid">
+        <div class="wl-loading">Loading movies…</div>
+      </div>
     </div>
 
-    <div class="movie-card">
-        <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-        </a>
-    </div>
+  </div><!-- /.page -->
 
-    <div class="movie-card">
-      <a href="movie_details.html">
-      <img src="https://placehold.co/300x450" alt="Movie poster" />
-      </a>
-    </div>
+  <script>
+  // ─── Config ──────────────────────────────────────────
+  var API_URL = 'https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495';
+  var API_KEY = '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS';
+  var LS_WATCHLIST = 'rately_watchlist';
+  var LS_WATCHED   = 'rately_watched';
 
-  </div>
+  var _allMovies   = [];
+  var _currentView = 'grid';
+  var _statusFilter = 'all';
+  var _searchQuery  = '';
 
-</div>
+  // ─── Storage helpers ─────────────────────────────────
+  function lsGet(key, fallback) {
+    try { return JSON.parse(localStorage.getItem(key)) || fallback; }
+    catch(e) { return fallback; }
+  }
+  function lsSet(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
-<script type="text/javascript">
-    function openSidebar() {
-      document.getElementById('sidebar').className = 'sidebar open';
-      document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+  function getWatchlist() { return lsGet(LS_WATCHLIST, []); }
+  function getWatched()   { return lsGet(LS_WATCHED, []); }
+
+  function isInWatchlist(id) { return getWatchlist().indexOf(id) !== -1; }
+  function isWatched(id)     { return getWatched().indexOf(id) !== -1; }
+
+  // ─── Toast ──────────────────────────────────────────
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(function() { t.classList.remove('show'); }, 3000);
+  }
+
+  // ─── Watchlist management ────────────────────────────
+  function addToWatchlist(id) {
+    var wl = getWatchlist();
+    if (wl.indexOf(id) === -1) {
+      wl.unshift(id); // add to front (date added = newest first)
+      lsSet(LS_WATCHLIST, wl);
+      showToast('Added to watchlist ✓');
+      render();
     }
-    function closeSidebar() {
-      document.getElementById('sidebar').className = 'sidebar';
-      document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+  }
+
+  function removeFromWatchlist(id) {
+    var wl = getWatchlist().filter(function(i) { return i !== id; });
+    lsSet(LS_WATCHLIST, wl);
+    // also remove from watched
+    var watched = getWatched().filter(function(i) { return i !== id; });
+    lsSet(LS_WATCHED, watched);
+    showToast('Removed from watchlist');
+    render();
+  }
+
+  function toggleWatched(id) {
+    var watched = getWatched();
+    var idx = watched.indexOf(id);
+    if (idx === -1) {
+      watched.push(id);
+      showToast('Marked as watched ✓');
+    } else {
+      watched.splice(idx, 1);
+      showToast('Marked as unwatched');
     }
+    lsSet(LS_WATCHED, watched);
+    render();
+  }
+
+  // ─── Stats ──────────────────────────────────────────
+  function updateStats() {
+    var wl      = getWatchlist();
+    var watched = getWatched().filter(function(id) { return wl.indexOf(id) !== -1; });
+    var total   = wl.length;
+    var done    = watched.length;
+    var left    = total - done;
+    var pct     = total > 0 ? Math.round((done / total) * 100) : 0;
+
+    document.getElementById('statTotal').textContent   = total;
+    document.getElementById('statWatched').textContent = done;
+    document.getElementById('statLeft').textContent    = left;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressFill').title = pct + '% watched';
+
+    // Sync profile page stat
+    try { lsSet('rately_watchlist', getWatchlist()); } catch(e) {}
+  }
+
+  // ─── Filtering / sorting ─────────────────────────────
+  function getFilteredMovies() {
+    var wl     = getWatchlist();
+    var movies = _allMovies.filter(function(m) { return wl.indexOf(m.id) !== -1; });
+
+    // Sort by "date added" = order in wl array
+    var genre  = document.getElementById('filterGenre').value;
+    var type   = document.getElementById('filterType').value;
+    var sortBy = document.getElementById('sortBy').value;
+    var q      = _searchQuery.toLowerCase();
+
+    if (genre)  movies = movies.filter(function(m) { return m.genre === genre; });
+    if (type)   movies = movies.filter(function(m) { return m.type === type; });
+    if (q)      movies = movies.filter(function(m) { return m.title.toLowerCase().indexOf(q) !== -1; });
+
+    if (_statusFilter === 'watched')
+      movies = movies.filter(function(m) { return isWatched(m.id); });
+    else if (_statusFilter === 'unseen')
+      movies = movies.filter(function(m) { return !isWatched(m.id); });
+
+    if (sortBy === 'title')
+      movies.sort(function(a,b) { return a.title.localeCompare(b.title); });
+    else if (sortBy === 'rating_desc')
+      movies.sort(function(a,b) { return b.rating - a.rating; });
+    else if (sortBy === 'rating_asc')
+      movies.sort(function(a,b) { return a.rating - b.rating; });
+    else if (sortBy === 'year_desc')
+      movies.sort(function(a,b) { return b.year - a.year; });
+    else {
+      // date added: keep wl order
+      movies.sort(function(a,b) { return wl.indexOf(a.id) - wl.indexOf(b.id); });
+    }
+
+    return movies;
+  }
+
+  // ─── Render watchlist card (grid) ────────────────────
+  function gridCardHTML(m) {
+    var watched = isWatched(m.id);
+    var stars = starBar(m.rating);
+    return '<div class="wl-card' + (watched ? ' wl-card--watched' : '') + '" data-id="' + m.id + '">' +
+      '<div class="wl-card-poster">' +
+        '<a href="movie_details.html?id=' + m.id + '">' +
+          '<img src="' + m.poster + '" alt="' + m.title + '" loading="lazy" />' +
+        '</a>' +
+        (watched ? '<div class="wl-watched-badge">&#10003; Watched</div>' : '') +
+        '<div class="wl-card-actions-hover">' +
+          '<button class="wl-btn wl-btn-remove" onclick="removeFromWatchlist(' + m.id + ')" title="Remove">&#10005;</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="wl-card-body">' +
+        '<a href="movie_details.html?id=' + m.id + '" class="wl-card-title">' + m.title + '</a>' +
+        '<div class="wl-card-meta">' + m.year + ' &middot; <span class="wl-genre">' + cap(m.genre) + '</span></div>' +
+        '<div class="wl-card-rating">' + stars + '<span class="wl-rating-num">' + m.rating + '</span></div>' +
+        '<div class="wl-card-btns">' +
+          '<button class="wl-btn ' + (watched ? 'wl-btn-unwatch' : 'wl-btn-watch') + '" onclick="toggleWatched(' + m.id + ')">' +
+            (watched ? '&#10007; Unwatch' : '&#10003; Watched') +
+          '</button>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+  }
+
+  // ─── Render watchlist row (list) ─────────────────────
+  function listRowHTML(m) {
+    var watched = isWatched(m.id);
+    return '<div class="wl-row' + (watched ? ' wl-row--watched' : '') + '" data-id="' + m.id + '">' +
+      '<a href="movie_details.html?id=' + m.id + '" class="wl-row-poster">' +
+        '<img src="' + m.poster + '" alt="' + m.title + '" loading="lazy" />' +
+        (watched ? '<div class="wl-row-watched-badge">&#10003;</div>' : '') +
+      '</a>' +
+      '<div class="wl-row-info">' +
+        '<a href="movie_details.html?id=' + m.id + '" class="wl-row-title">' + m.title + '</a>' +
+        '<div class="wl-row-meta">' +
+          '<span>' + m.year + '</span>' +
+          '<span class="dot">&middot;</span>' +
+          '<span>' + m.type + '</span>' +
+          '<span class="dot">&middot;</span>' +
+          '<span class="wl-genre">' + cap(m.genre) + '</span>' +
+          (m.episodes ? '<span class="dot">&middot;</span><span>' + m.episodes + ' eps</span>' : '') +
+        '</div>' +
+        '<div class="wl-row-rating">&#9733; ' + m.rating + '<span class="wl-row-comments"> (' + m.comments + ' reviews)</span></div>' +
+      '</div>' +
+      '<div class="wl-row-actions">' +
+        '<button class="wl-btn ' + (watched ? 'wl-btn-unwatch' : 'wl-btn-watch') + '" onclick="toggleWatched(' + m.id + ')">' +
+          (watched ? '&#10007; Unwatch' : '&#10003; Watched') +
+        '</button>' +
+        '<a href="movie_details.html?id=' + m.id + '" class="wl-btn wl-btn-details">Details</a>' +
+        '<button class="wl-btn wl-btn-remove-sm" onclick="removeFromWatchlist(' + m.id + ')" title="Remove">&#10005;</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  // ─── Discover card ───────────────────────────────────
+  function discoverCardHTML(m) {
+    var inList = isInWatchlist(m.id);
+    return '<div class="dc-card" data-id="' + m.id + '">' +
+      '<a href="movie_details.html?id=' + m.id + '" class="dc-card-poster">' +
+        '<img src="' + m.poster + '" alt="' + m.title + '" loading="lazy" />' +
+        '<div class="dc-card-rating">&#9733; ' + m.rating + '</div>' +
+      '</a>' +
+      '<div class="dc-card-body">' +
+        '<a href="movie_details.html?id=' + m.id + '" class="dc-card-title">' + m.title + '</a>' +
+        '<div class="dc-card-meta">' + m.year + ' &middot; ' + cap(m.genre) + '</div>' +
+        '<button class="dc-card-add ' + (inList ? 'in-list' : '') + '" onclick="toggleDiscover(this,' + m.id + ')">' +
+          (inList ? '&#10003; In Watchlist' : '+ Add to Watchlist') +
+        '</button>' +
+      '</div>' +
+    '</div>';
+  }
+
+  // ─── Toggle discover button ───────────────────────────
+  function toggleDiscover(btn, id) {
+    if (isInWatchlist(id)) {
+      removeFromWatchlist(id);
+      btn.textContent = '+ Add to Watchlist';
+      btn.classList.remove('in-list');
+    } else {
+      addToWatchlist(id);
+      btn.innerHTML = '&#10003; In Watchlist';
+      btn.classList.add('in-list');
+    }
+  }
+
+  // ─── Helpers ─────────────────────────────────────────
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : ''; }
+
+  function starBar(rating) {
+    var full = Math.round(rating);       // rating is out of 5
+    var html = '';
+    for (var i = 1; i <= 5; i++) {
+      html += '<span class="star-mini' + (i <= full ? ' on' : '') + '">&#9733;</span>';
+    }
+    return html;
+  }
+
+  // ─── Main render ─────────────────────────────────────
+  function render() {
+    updateStats();
+    var movies = getFilteredMovies();
+    var grid   = document.getElementById('wlGrid');
+    var empty  = document.getElementById('wlEmpty');
+
+    if (getWatchlist().length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      if (movies.length === 0) {
+        grid.innerHTML = '<p class="wl-no-match">No movies match your filters.</p>';
+      } else if (_currentView === 'list') {
+        grid.className = 'wl-list';
+        grid.id = 'wlGrid';
+        grid.innerHTML = movies.map(listRowHTML).join('');
+      } else {
+        grid.className = 'wl-grid';
+        grid.id = 'wlGrid';
+        grid.innerHTML = movies.map(gridCardHTML).join('');
+      }
+    }
+
+    renderDiscover();
+  }
+
+  function renderDiscover() {
+    var wl = getWatchlist();
+    var movies = _allMovies.filter(function(m) { return wl.indexOf(m.id) === -1; });
+    var dc = document.getElementById('discoverGrid');
+    var section = document.getElementById('discoverSection');
+    if (movies.length === 0) {
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+    dc.innerHTML = movies.map(discoverCardHTML).join('');
+  }
+
+  // ─── View toggle ─────────────────────────────────────
+  function setView(view) {
+    _currentView = view;
+    document.getElementById('btnGrid').classList.toggle('active', view === 'grid');
+    document.getElementById('btnList').classList.toggle('active', view === 'list');
+    render();
+  }
+
+  // ─── Status filter ────────────────────────────────────
+  function setStatusFilter(status) {
+    _statusFilter = status;
+    document.getElementById('filterAll').classList.toggle('active', status === 'all');
+    document.getElementById('filterUnseen').classList.toggle('active', status === 'unseen');
+    document.getElementById('filterWatched').classList.toggle('active', status === 'watched');
+    render();
+  }
+
+  // ─── Other filters / sort ────────────────────────────
+  function applyFilters() { render(); }
+
+  function onSearch() {
+    _searchQuery = document.getElementById('searchInput').value;
+    render();
+  }
+
+  // ─── Sidebar ─────────────────────────────────────────
+  function openSidebar() {
+    document.getElementById('sidebar').className = 'sidebar open';
+    document.getElementById('sidebarOverlay').className = 'sidebar-overlay open';
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').className = 'sidebar';
+    document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
+  }
+
+  // ─── Boot ────────────────────────────────────────────
+  fetch(API_URL, { headers: { 'X-Master-Key': API_KEY } })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      _allMovies = data.record.movies;
+
+      // If user has no watchlist yet, seed with first 5 movies
+      if (getWatchlist().length === 0) {
+        lsSet(LS_WATCHLIST, _allMovies.slice(0, 5).map(function(m) { return m.id; }));
+      }
+
+      render();
+    })
+    .catch(function(err) {
+      document.getElementById('wlGrid').innerHTML =
+        '<p class="wl-loading">Could not load movies. Please try again.</p>';
+    });
   </script>
+  <script src="/js/navbar.js"></script>
 
 </body>
 </html>
