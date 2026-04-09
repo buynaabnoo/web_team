@@ -1,5 +1,9 @@
 // components.js
 
+const MOVIES_CACHE_KEY = 'rately_movies_cache_v1';
+const MOVIES_CACHE_TTL_MS = 1000 * 60 * 30;
+let moviesRequest = null;
+
 // ── Movie класс ──
 export class Movie {
   constructor(data) {
@@ -42,8 +46,59 @@ function mergeMovieData(baseMovies, overlayMovies) {
   });
 }
 
+function readMoviesCache() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(MOVIES_CACHE_KEY));
+    if (!cached || !Array.isArray(cached.movies)) return null;
+    return cached;
+  } catch (error) {
+    return null;
+  }
+}
+
+function writeMoviesCache(movies) {
+  try {
+    localStorage.setItem(MOVIES_CACHE_KEY, JSON.stringify({
+      savedAt: Date.now(),
+      movies: movies
+    }));
+  } catch (error) {}
+}
+
+function isFreshCache(cache) {
+  return !!cache && typeof cache.savedAt === 'number' && (Date.now() - cache.savedAt) < MOVIES_CACHE_TTL_MS;
+}
+
+async function fetchRemoteMovies() {
+  const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+  const timeoutId = controller
+    ? setTimeout(function() { controller.abort(); }, 4000)
+    : null;
+
+  try {
+    const remoteResponse = await fetch('https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495', {
+      headers: {
+        'X-Master-Key': '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS'
+      },
+      signal: controller ? controller.signal : undefined
+    });
+
+    if (!remoteResponse.ok) {
+      throw new Error('Remote movie fetch failed with status ' + remoteResponse.status);
+    }
+
+    const remoteData = await remoteResponse.json();
+    return remoteData.record.movies || [];
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId);
+  }
+}
+
 // ── Өгөгдөл татах ──
 export async function fetchMovies() {
+  if (moviesRequest) return moviesRequest;
+
+  moviesRequest = (async function() {
   let localMovies = null;
 
   try {
@@ -54,27 +109,35 @@ export async function fetchMovies() {
     }
   } catch (error) {}
 
-  try {
-    const remoteResponse = await fetch('https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495', {
-      headers: {
-        'X-Master-Key': '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS'
+    const cached = readMoviesCache();
+
+    if (isFreshCache(cached)) {
+      return mergeMovieData(cached.movies, localMovies);
+    }
+
+    try {
+      const remoteMovies = await fetchRemoteMovies();
+      writeMoviesCache(remoteMovies);
+      return mergeMovieData(remoteMovies, localMovies);
+    } catch (error) {
+      if (cached && Array.isArray(cached.movies)) {
+        return mergeMovieData(cached.movies, localMovies);
       }
-    });
 
-    if (!remoteResponse.ok) {
-      throw new Error('Remote movie fetch failed with status ' + remoteResponse.status);
+      if (localMovies) {
+        return localMovies.map(function(movie) {
+          return new Movie(movie);
+        });
+      }
+
+      throw error;
     }
+  })();
 
-    const remoteData = await remoteResponse.json();
-    return mergeMovieData(remoteData.record.movies || [], localMovies);
-  } catch (error) {
-    if (localMovies) {
-      return localMovies.map(function(movie) {
-        return new Movie(movie);
-      });
-    }
-
-    throw error;
+  try {
+    return await moviesRequest;
+  } finally {
+    moviesRequest = null;
   }
 }
 

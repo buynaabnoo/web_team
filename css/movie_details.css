@@ -54,7 +54,6 @@
   display: flex;
   justify-content: center;
   gap: 4px;
-  margin-top: 8px;
 }
 
 .detail-star-btn {
@@ -77,16 +76,6 @@
   color: var(--star);
 }
 
-.detail-rating-note {
-  margin-top: 6px;
-  font-size: 0.78rem;
-  color: var(--muted);
-}
-
-.detail-rating-note.active {
-  color: var(--accent);
-  font-weight: 600;
-}
 
 /* ── Media row (poster + trailer side by side) ── */
 .media-row {

@@ -83,10 +83,8 @@ function updateMovieSeo(movie) {
 
 function renderUserRating(movieId) {
   const starRate = document.getElementById('detailStarRate');
-  const ratingNote = document.getElementById('detailRatingNote');
-  const toggleBtn = document.getElementById('toggleRatingBtn');
 
-  if (!starRate || !ratingNote || !toggleBtn) return;
+  if (!starRate) return;
 
   const ratings = getRatings();
   const userRating = ratings[movieId] || 0;
@@ -94,22 +92,12 @@ function renderUserRating(movieId) {
   starRate.innerHTML = [1, 2, 3, 4, 5].map(function(value) {
     return '<button class="detail-star-btn' + (userRating >= value ? ' active' : '') + '" type="button" data-rating="' + value + '" role="radio" aria-checked="' + (userRating === value ? 'true' : 'false') + '" aria-label="Rate ' + value + ' out of 5">&#9733;</button>';
   }).join('');
-
-  ratingNote.textContent = userRating ? 'Your rating: ' + userRating + '/5' : 'Tap a star to rate';
-  ratingNote.classList.toggle('active', userRating > 0);
-  toggleBtn.textContent = userRating ? 'Update rating' : 'Rate this title';
 }
 
 function bindUserRating(movieId) {
   const starRate = document.getElementById('detailStarRate');
-  const toggleBtn = document.getElementById('toggleRatingBtn');
 
-  if (!starRate || !toggleBtn) return;
-
-  toggleBtn.addEventListener('click', function() {
-    const firstStar = starRate.querySelector('.detail-star-btn');
-    if (firstStar) firstStar.focus();
-  });
+  if (!starRate) return;
 
   starRate.addEventListener('click', function(event) {
     const star = event.target.closest('[data-rating]');
