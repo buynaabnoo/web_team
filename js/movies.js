@@ -1,35 +1,8 @@
 // movies.js — homepage logic
+import { Movie, fetchMovies, toggleWatched, toggleAdd } from '/js/components.js';
 
-//  Movie класс 
-class Movie {
-  constructor(data) {
-    this.id = data.id;
-    this.title = data.title;
-    this.genre = data.genre;
-    this.rating = data.rating;
-    this.year = data.year;
-    this.type = data.type;
-    this.episodes = data.episodes;
-    this.poster = data.poster;
-    this.top = data.top;
-    this.rank = data.rank;
-    this.new = data.new;
-    this.comments = data.comments;
-  }
-}
-
-//  Өгөгдөл татах 
-async function fetchMovies() {
-  const response = await fetch('https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495', {
-    headers: {
-      'X-Master-Key': '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS'
-    }
-  });
-  const data = await response.json();
-  return data.record.movies.map(function(m) {
-    return new Movie(m);
-  });
-}
+window.toggleWatched = toggleWatched;
+window.toggleAdd = toggleAdd;
 
 //  URL параметр авах 
 function getParams() {
@@ -136,33 +109,6 @@ async function buildPage() {
   const watchlistContainer = document.getElementById('watchlist-grid');
   if (watchlistContainer) {
     watchlistContainer.innerHTML = movies.slice(0, 6).map(createPosterCard).join('');
-  }
-}
-
-//  Товч toggle функцүүд 
-function toggleWatched(btn) {
-  if (btn.innerHTML === 'Mark as watched') {
-    btn.innerHTML = '&#10003; Watched';
-    btn.style.borderColor = 'var(--accent)';
-    btn.style.color = 'var(--accent)';
-  } else {
-    btn.innerHTML = 'Mark as watched';
-    btn.style.borderColor = '';
-    btn.style.color = '';
-  }
-}
-
-function toggleAdd(btn) {
-  if (btn.innerHTML === '+') {
-    btn.innerHTML = '&#10003;';
-    btn.style.background = 'var(--accent)';
-    btn.style.color = '#fff';
-    btn.style.borderColor = 'var(--accent)';
-  } else {
-    btn.innerHTML = '+';
-    btn.style.background = '';
-    btn.style.color = '';
-    btn.style.borderColor = '';
   }
 }
 

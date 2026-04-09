@@ -1,34 +1,9 @@
-class Movie {
-  constructor(data) {
-    this.id = data.id;
-    this.title = data.title;
-    this.genre = data.genre;
-    this.rating = data.rating;
-    this.year = data.year;
-    this.type = data.type;
-    this.episodes = data.episodes;
-    this.poster = data.poster;
-    this.top = data.top;
-    this.rank = data.rank;
-    this.new = data.new;
-    this.comments = data.comments;
-    this.description = data.description;
-    this.creators = data.creators;
-    this.cast = data.cast;
-  }
-}
 
-async function fetchMovies() {
-  const response = await fetch('https://api.jsonbin.io/v3/b/69ba5dd4b7ec241ddc7bb495', {
-    headers: {
-      'X-Master-Key': '$2a$10$j8mQ6fTM0HG02NPIMVU24.pTUA/Z2C4dmJzFHI9KIMpCav9lhVxkS'
-    }
-  });
-  const data = await response.json();
-  return data.record.movies.map(function(m) { //
-    return new Movie(m);
-  });
-}
+import { Movie, fetchMovies, toggleWatched, toggleAdd_movie_details, toggleLike } from '/js/components.js';
+
+window.toggleWatched = toggleWatched;
+window.toggleAdd_movie_details = toggleAdd_movie_details;
+window.toggleLike = toggleLike;
 
 function getMovieId() {
   const params = new URLSearchParams(window.location.search);
@@ -46,7 +21,7 @@ async function buildPage() {
     return;
   }
 
-  document.title = movie.title + ' — Cinema Production';
+  document.title = movie.title + ' — Rately';
 
   const titleEl = document.getElementById('movie-title');
   if (titleEl) titleEl.innerHTML = movie.title;
@@ -95,7 +70,7 @@ if (reviewsGrid) {
       '</div>' +
       '<div class="review-movie-name">' + movie.title + '</div>' +
       '<p class="review-comment">comment... A thoughtful take on what makes this film special and worth watching.</p>' +
-      '<button class="review-likes">0</button>' +
+      '<button class="review-likes" onclick="toggleLike(this)">0</button>' +
     '</div>' +
     '<div class="review-card">' +
       '<div class="review-card-header">' +
@@ -104,8 +79,9 @@ if (reviewsGrid) {
       '</div>' +
       '<div class="review-movie-name">' + movie.title + '</div>' +
       '<p class="review-comment">comment... A thoughtful take on what makes this film special and worth watching.</p>' +
-      '<button class="review-likes">0</button>' +
+      '<button class="review-likes" onclick="toggleLike(this)">0</button>' +
     '</div>';
 }
 }
+
 buildPage();

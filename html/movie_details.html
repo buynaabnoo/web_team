@@ -48,8 +48,7 @@
     </a>
 
     <ul class="nav-links">
-      <li><a href="/html/movies.html" class="nav-item">Movies</a></li>
-      <li><a href="/html/reviews.html" class="nav-item">Reviews</a></li>
+      <li><a href="/html/advanced_search.html" class="nav-item">Movies</a></li>
       <li class="nav-has-dropdown">
         <button class="nav-item nav-dropdown-trigger">Browse <span class="nav-chevron">&#9660;</span></button>
         <div class="nav-dropdown-panel">
@@ -123,8 +122,7 @@
   </div>
 
   <!-- Genres -->
-  <div class="genres">
-    <button class="genre-pill" id="genre">genre</button>
+  <div class="genres" id="genre">
   </div>
 
   <!-- Description and Actions -->
@@ -132,9 +130,9 @@
     <p class="description"id="movie-description">
       Movie description here...
     </p>
-    <div class="actions">
-      <button class="btn-watchlist">Add to watchlist</button>
-      <button class="btn-watched">Mark as watched</button>
+    <div class="actions" id="movie-actions">
+      <button class="btn-watchlist" onclick="toggleAdd_movie_details(this)">Add to watchlist</button>
+      <button class="btn-watched" onclick="toggleWatched(this)">Mark as watched</button>
     </div>
   </div>
 
@@ -144,11 +142,11 @@
   <div class="credits-reviews-row">
     <div class="credits">
       <div class="credit-row">
-        <span class="credit-label">Creators :</span>
+        <span class="credit-label">Creators:</span>
         <span class="credit-names" id="movie-creators">names...</span>
       </div>
       <div class="credit-row">
-        <span class="credit-label">Main actors/actresses :</span>
+        <span class="credit-label">Casts:</span>
         <span class="credit-names" id="movie-cast">names...</span>
       </div>
     </div>
@@ -200,7 +198,7 @@
       document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
     }
   </script>
-  <script type="text/javascript" src="/js/movie-detail.js"></script>
+  <script type="module" src="/js/movie-detail.js"></script>
   <script src="/js/navbar.js"></script>
 
 </body>
