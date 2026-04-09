@@ -6,11 +6,32 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rately</title>
+  <title>Rately | Discover Movies, Reviews, Trailers, and Watchlists</title>
+  <meta name="description" content="Discover movies and shows on Rately with trailers, ratings, reviews, advanced search, and personal watchlists." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://rately.example.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Rately | Discover Movies, Reviews, Trailers, and Watchlists" />
+  <meta property="og:description" content="Explore movie ratings, reviews, trailers, advanced search, and personalized watchlists on Rately." />
+  <meta property="og:url" content="https://rately.example.com/" />
+  <meta property="og:image" content="https://rately.example.com/img/logo_croped.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Rately | Discover Movies, Reviews, Trailers, and Watchlists" />
+  <meta name="twitter:description" content="Explore movie ratings, reviews, trailers, advanced search, and personalized watchlists on Rately." />
+  <meta name="twitter:image" content="https://rately.example.com/img/logo_croped.png" />
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
   <link rel="stylesheet" type="text/css" href="./css/styles.css" />
   <link rel="stylesheet" type="text/css" href="./css/index.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Rately",
+      "url": "https://rately.example.com/",
+      "description": "Discover movies, ratings, reviews, trailers, and personal watchlists on Rately."
+    }
+  </script>
 </head>
 
 <body>
@@ -63,7 +84,7 @@
       </li>
     </ul>
 
-    <form class="nav-search" action="/html/movies.html" method="get">
+    <form class="nav-search" action="/html/advanced_search.html" method="get">
       <input type="text" name="search" placeholder="Search movies, shows…" />
       <button type="submit" class="nav-search-btn">Search</button>
     </form>
@@ -85,30 +106,31 @@
   <div class="page">
 
     <!-- ── Hero / Trailer Section ── -->
-    <div class="hero">  
+    <div class="hero" id="heroSection">  
 
       <!-- Main player -->
-      <div class="hero-player">
-        <button class="hero-arrow left">&#9664;</button>
+      <div class="hero-player" id="heroPlayer">
+        <button class="hero-arrow left" id="heroPrevBtn" aria-label="Previous featured title">&#9664;</button>
 
-        <button class="hero-play">&#9654;</button>
+        <button class="hero-play" id="heroPlayBtn" type="button" aria-label="Play featured trailer">&#9654;</button>
 
-        <button class="hero-arrow right">&#9654;</button>
+        <button class="hero-arrow right" id="heroNextBtn" aria-label="Next featured title">&#9654;</button>
 
         <!-- Info bar at bottom of player -->
         <div class="hero-info">
           <div class="hero-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/56x56" alt="The Drama thumbnail" />
+            <a href="/html/movie_details.html" id="heroThumbLink">
+              <img id="heroThumbImage" src="https://placehold.co/56x56" alt="Featured movie thumbnail" />
             </a>
           </div>
           <div>
-            <div class="hero-title">&#8220;The Drama&#8221;</div>
-            <div class="hero-meta">
+            <div class="hero-title" id="heroTitle">&#8220;Featured title&#8221;</div>
+            <a href="/html/movie_details.html" class="hero-trailer-link" id="heroDetailLink">View details</a>
+            <div class="hero-meta" id="heroMeta">
               <span class="star">&#9733;</span>
-              <span>4.6</span>
+              <span id="heroRating">0.0</span>
               <span>&#8212;</span>
-              <span>16 comments</span>
+              <span id="heroMetaText">0 comments</span>
             </div>
           </div>
         </div>
@@ -116,115 +138,32 @@
 
       <!-- Next panel -->
       <div class="hero-next">
-        <div class="hero-next-title">Next</div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 10 comments</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 20 comments</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 35 comments</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 20 comments</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 20 comments</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="next-item">
-          <div class="next-thumb">
-            <a href="./html/movie_details.html">
-              <img src="https://placehold.co/64x48" alt="The Drama" />
-              <span class="next-play-icon">&#9654;</span>
-            </a>
-          </div>
-          <div class="next-info">
-            <div class="next-movie-title">&#8220;The Drama&#8221;</div>
-            <a href="./html/movie_details.html" class="next-trailer-link">Watch the trailer</a>
-            <div class="next-meta">
-              <span class="star">&#9733;</span>
-              <span>4.6 &#8212; 20 comments</span>
-            </div>
-          </div>
-        </div>
+        <div class="hero-next-title">Up Next</div>
+        <div id="heroNextList"></div>
 
         <div class="hero-next-label">Watch new movies and trailers</div>
       </div>
 
     </div>
     <!-- end hero -->
+
+    <div class="hero-modal" id="heroTrailerModal" aria-hidden="true">
+      <div class="hero-modal-backdrop" id="heroModalBackdrop"></div>
+      <div class="hero-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="heroModalTitle">
+        <button class="hero-modal-close" id="heroModalClose" type="button" aria-label="Close trailer">&#215;</button>
+        <div class="hero-modal-header">
+          <div class="hero-modal-title" id="heroModalTitle">Trailer</div>
+        </div>
+        <div class="hero-modal-frame-wrap">
+          <iframe
+            id="heroTrailerFrame"
+            title="Featured trailer"
+            src=""
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen="allowfullscreen"></iframe>
+        </div>
+      </div>
+    </div>
 
     <!-- ── Top 10 This Month ── -->
     <div class="section">
@@ -248,7 +187,7 @@
         <h2 class="browse-row-title">New to Movies</h2>
         <a href="./html/new_to_movies.html" class="section-link">See all</a>
       </div>
-      <div class="poster-grid" id="id="new-movies-grid"">
+      <div class="poster-grid" id="new-movies-grid">
       </div>
     </div>
 

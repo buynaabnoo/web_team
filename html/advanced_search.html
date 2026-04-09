@@ -7,6 +7,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advanced Search · Rately</title>
+    <meta name="description" content="Search movies and shows on Rately by title, year, rating, genre, and sort order." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://rately.example.com/html/advanced_search.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Advanced Search | Rately" />
+    <meta property="og:description" content="Filter movies and shows by title, year, rating, genre, and sort order on Rately." />
+    <meta property="og:url" content="https://rately.example.com/html/advanced_search.html" />
+    <meta property="og:image" content="https://rately.example.com/img/logo_croped.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Advanced Search | Rately" />
+    <meta name="twitter:description" content="Filter movies and shows by title, year, rating, genre, and sort order on Rately." />
+    <meta name="twitter:image" content="https://rately.example.com/img/logo_croped.png" />
     <link rel="stylesheet" type="text/css"
                 href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600;700&amp;display=swap" />
     <link rel="stylesheet" type="text/css" href="../css/styles.css" />
@@ -63,8 +75,9 @@
         </li>
       </ul>
 
-      <form class="nav-search" action="/html/movies.html" method="get">
-        <input type="text" name="search" placeholder="Search movies, shows…" />
+      <form class="nav-search" action="/html/advanced_search.html" method="get">
+        <label class="sr-only" for="advancedNavSearchInput">Search movies or shows</label>
+        <input type="text" id="advancedNavSearchInput" name="search" placeholder="Search movies, shows…" />
         <button type="submit" class="nav-search-btn">Search</button>
       </form>
 
@@ -94,7 +107,7 @@
             <div class="search-grid">
                 <!-- Movie Name -->
                 <div class="search-field">
-                    <label>
+                    <label for="search-name">
                          Movie Name
                     </label>
                     <input type="text" id="search-name" placeholder="Example: Dune, Oppenheimer..." />
@@ -102,7 +115,7 @@
 
                 <!-- Year -->
                 <div class="search-field">
-                    <label>
+                    <label for="search-year">
                         Year
                     </label>
                     <select id="search-year">
@@ -120,7 +133,7 @@
 
                 <!-- Rating -->
                 <div class="search-field">
-                    <label>
+                    <label for="search-rating">
                         <span>Rating</span>
                     </label>
                     <select id="search-rating">
@@ -134,7 +147,7 @@
 
                 <!-- Sort By -->
                 <div class="search-field">
-                    <label>
+                    <label for="search-sort">
                         <span>Sort By</span>
                     </label>
                     <select id="search-sort">
@@ -148,8 +161,13 @@
 
             <!-- SELECTABLE GENRES -->
             <div class="genres-section">
-                <h3>Filter by Genre</h3>
-                <div class="genres-grid">
+                <div class="genres-header">
+                    <h3>Filter by Genre</h3>
+                    <button class="genres-toggle" id="genresToggleBtn" type="button" aria-expanded="true" aria-controls="genresGrid">
+                        Hide genres
+                    </button>
+                </div>
+                <div class="genres-grid" id="genresGrid" role="group" aria-label="Genre filters">
                     <label class="genre-checkbox">
                         <input type="checkbox" />
                         <span>Action</span>
@@ -203,10 +221,10 @@
 
             <!-- SEARCH BUTTONS -->
             <div class="search-actions">
-                <button class="search-btn search-btn-primary" id="search-btn">
+                <button class="search-btn search-btn-primary" id="search-btn" type="button">
                     <span>Search</span>
                 </button>
-                <button class="search-btn search-btn-secondary" id="clear-btn">
+                <button class="search-btn search-btn-secondary" id="clear-btn" type="button">
                     <span>Clear Filters</span>
                 </button>
             </div>
@@ -216,11 +234,11 @@
         <div class="results-section">
             <div class="results-header">
                 <h2>Recommended</h2>
-                <span class="results-count" id="results-count">0 movies</span>
+                <span class="results-count" id="results-count" role="status" aria-live="polite">0 movies</span>
             </div>
 
             <!-- RECOMMENDED MOVIES GRID -->
-            <div class="results-grid" id="results-grid">
+            <div class="results-grid" id="results-grid" aria-live="polite" aria-busy="false">
                 <!-- Movie Card 1 -->
                 <div class="movie-card">
                     <div class="movie-poster">

@@ -115,20 +115,58 @@ function showResults(movies) {
 
   if (!grid) return;
 
+  grid.setAttribute('aria-busy', 'true');
+
   if (movies.length === 0) {
     grid.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--muted);">No movies found. Try different filters.</div>';
   } else {
     grid.innerHTML = movies.map(createMovieCard).join('');
   }
+
+  grid.setAttribute('aria-busy', 'false');
+}
+
+function applyInitialSearchFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const query = (params.get('search') || '').trim();
+  const nameInput = document.getElementById('search-name');
+
+  if (!nameInput || !query) return false;
+
+  nameInput.value = query;
+  return true;
+}
+
+function setupGenresToggle() {
+  const toggleBtn = document.getElementById('genresToggleBtn');
+  const genresGrid = document.getElementById('genresGrid');
+
+  if (!toggleBtn || !genresGrid) return;
+
+  function setCollapsed(collapsed) {
+    genresGrid.classList.toggle('is-collapsed', collapsed);
+    toggleBtn.textContent = collapsed ? 'Show genres' : 'Hide genres';
+    toggleBtn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+  }
+
+  if (window.innerWidth <= 480) {
+    setCollapsed(true);
+  }
+
+  toggleBtn.addEventListener('click', function() {
+    setCollapsed(!genresGrid.classList.contains('is-collapsed'));
+  });
 }
 
 // ── Хуудас үүсгэх ──
 async function buildPage() {
   // Өгөгдөл татах
   window._allMovies = await fetchMovies();
+  const hasInitialSearch = applyInitialSearchFromUrl();
+  setupGenresToggle();
 
   // Эхний үр дүн харуулах
-  showResults(window._allMovies);
+  showResults(hasInitialSearch ? filterMovies(window._allMovies) : window._allMovies);
 
   // Search товч
   const searchBtn = document.getElementById('search-btn');

@@ -7,6 +7,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reviews</title>
+  <meta name="description" content="Read movie reviews, ratings, and audience reactions on Rately." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" id="reviewsCanonical" href="https://rately.example.com/html/reviews.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" id="reviewsOgTitle" content="Reviews | Rately" />
+  <meta property="og:description" id="reviewsOgDescription" content="Read movie reviews, ratings, and audience reactions on Rately." />
+  <meta property="og:url" id="reviewsOgUrl" content="https://rately.example.com/html/reviews.html" />
+  <meta property="og:image" id="reviewsOgImage" content="https://rately.example.com/img/logo_croped.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="reviewsTwitterTitle" content="Reviews | Rately" />
+  <meta name="twitter:description" id="reviewsTwitterDescription" content="Read movie reviews, ratings, and audience reactions on Rately." />
+  <meta name="twitter:image" id="reviewsTwitterImage" content="https://rately.example.com/img/logo_croped.png" />
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
   <link rel="stylesheet" type="text/css" href="../css/styles.css" />
@@ -63,8 +75,9 @@
       </li>
     </ul>
 
-    <form class="nav-search" action="/html/movies.html" method="get">
-      <input type="text" name="search" placeholder="Search movies, shows…" />
+    <form class="nav-search" action="/html/advanced_search.html" method="get">
+      <label class="sr-only" for="reviewsNavSearchInput">Search movies or shows</label>
+      <input type="text" id="reviewsNavSearchInput" name="search" placeholder="Search movies, shows…" />
       <button type="submit" class="nav-search-btn">Search</button>
     </form>
 
@@ -82,23 +95,23 @@
 
 <div class="page">
 
-  <h1>Reviews</h1>
+  <h1 id="reviewsPageTitle">Reviews</h1>
 
   <!-- Movie summary -->
   <div class="movie-summary">
 
     <div class="movie-card">
-      <img src="../img/landscape_princess_khutulun_poster.jpeg" alt="Movie Poster" />
+      <img id="reviewsPoster" src="../img/landscape_princess_khutulun_poster.jpeg" alt="Movie Poster" />
     </div>
 
-    <div>
-      <div class="movie-info-title">&#8220;Princess Khutulun&#8221;</div>
+    <div class="movie-summary-content">
+      <div class="movie-info-title" id="reviewsMovieTitle">&#8220;Movie Title&#8221;</div>
       <div class="movie-info">
 
         <!-- Watched toggle -->
         <div class="toggle-row">
           <label class="toggle">
-            <input type="checkbox" checked="checked" />
+            <input type="checkbox" id="reviewsWatchedToggle" />
             <span class="toggle-track">&#160;</span>
             <span class="toggle-thumb">&#160;</span>
           </label>
@@ -108,13 +121,15 @@
         <!-- Rating -->
         <div class="rating-row">
           <span class="star">&#9733;</span>
-          <span>4.5</span>
-          <span class="count">(12k)</span>
+          <span id="reviewsMovieRating">0.0</span>
+          <span class="count" id="reviewsMovieCount">(0)</span>
         </div>
 
         <!-- Action links -->
-        <button class="info-link">Add to Your Watchlist</button>
-        <button class="info-link">Rate and Review</button>
+        <div class="movie-info-actions">
+          <button class="info-link" id="reviewsWatchlistBtn" type="button">Add to Your Watchlist</button>
+          <a class="info-link" id="reviewsBackToMovie" href="movie_details.html">Rate and Review</a>
+        </div>
 
       </div>
     </div>
@@ -122,49 +137,7 @@
   </div>
 
   <!-- Review list -->
-  <div class="reviews-list">
-
-    <div class="review-card">
-      <div class="review-card-header">
-        <span class="username-badge">username</span>
-        <span class="review-date">2026 : 12 : 31</span>
-      </div>
-      <div class="review-movie-name">&#8220;Movie name&#8221;</div>
-      <p class="review-comment">comment&#8230;</p>
-      <button class="review-likes">100</button>
-    </div>
-
-    <div class="review-card">
-      <div class="review-card-header">
-        <span class="username-badge">username</span>
-        <span class="review-date">2026 : 12 : 31</span>
-      </div>
-      <div class="review-movie-name">&#8220;Movie name&#8221;</div>
-      <p class="review-comment">comment&#8230;</p>
-      <button class="review-likes">100</button>
-    </div>
-
-    <div class="review-card">
-      <div class="review-card-header">
-        <span class="username-badge">username</span>
-        <span class="review-date">2026 : 12 : 31</span>
-      </div>
-      <div class="review-movie-name">&#8220;Movie name&#8221;</div>
-      <p class="review-comment">comment&#8230;</p>
-      <button class="review-likes">100</button>
-    </div>
-
-    <div class="review-card">
-      <div class="review-card-header">
-        <span class="username-badge">username</span>
-        <span class="review-date">2026 : 12 : 31</span>
-      </div>
-      <div class="review-movie-name">&#8220;Movie name&#8221;</div>
-      <p class="review-comment">comment&#8230;</p>
-      <button class="review-likes">100</button>
-    </div>
-
-  </div>
+  <div class="reviews-list" id="reviewsList" aria-live="polite"></div>
 
 </div>
 
@@ -178,6 +151,7 @@
       document.getElementById('sidebarOverlay').className = 'sidebar-overlay';
     }
   </script>
+  <script type="module" src="/js/reviews-page.js"></script>
   <script src="/js/navbar.js"></script>
 
 </body>

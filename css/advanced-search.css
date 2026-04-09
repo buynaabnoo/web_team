@@ -115,12 +115,39 @@
       margin-bottom: var(--space-lg);
     }
 
+    .genres-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: var(--space-md);
+    }
+
     .genres-section h3 {
       font-family: 'Playfair Display', serif;
       font-size: var(--font-lg);
       color: var(--search-text-primary);
-      margin-bottom: var(--space-md);
+      margin-bottom: 0;
       letter-spacing: var(--letter-spacing-mn);
+    }
+
+    .genres-toggle {
+      border: 1px solid var(--search-border);
+      background: #fff;
+      color: var(--search-text-primary);
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .genres-toggle:hover {
+      border-color: var(--search-accent);
+      color: var(--search-accent);
+      transform: translateY(-1px);
     }
 
     .genres-grid {
@@ -128,6 +155,15 @@
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: var(--space-sm);
       gap: 12px;
+      overflow: hidden;
+      max-height: 520px;
+      opacity: 1;
+      transition: max-height 0.28s ease, opacity 0.2s ease;
+    }
+
+    .genres-grid.is-collapsed {
+      max-height: 0;
+      opacity: 0;
     }
 
     .genre-checkbox {
@@ -498,6 +534,20 @@
 
       .search-form {
         padding: var(--space-lg);
+        border-radius: 24px;
+      }
+
+      .search-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .search-field {
+        padding: 0;
+      }
+
+      .search-field label {
+        margin-left: 4px;
       }
 
       .genres-grid {
@@ -520,15 +570,38 @@
     }
 
     @media (max-width: 480px) {
+      .search-container {
+        padding: 12px;
+      }
+
+      .search-form {
+        padding: 16px;
+        border-radius: 20px;
+      }
+
       .results-grid {
         grid-template-columns: 1fr;
+      }
+
+      .search-header h1 {
+        font-size: var(--font-xl);
+      }
+
+      .genres-header {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .genres-toggle {
+        width: 100%;
       }
 
       .genres-grid {
         grid-template-columns: 1fr;
       }
 
-      .search-header h1 {
-        font-size: var(--font-xl);
+      .genre-checkbox {
+        padding: 10px 12px;
+        border-radius: 18px;
       }
     }

@@ -18,6 +18,9 @@
 .hero-player {
   position: relative;
   background: #2a2520;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   align-items: stretch;
   flex-direction: column;
@@ -64,6 +67,7 @@
   margin: 0 auto;
   margin-top: 250px;
   justify-content: center;
+  text-decoration: none;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s;
 }
@@ -150,11 +154,19 @@
   gap: 10px;
   cursor: pointer;
   padding: 6px;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
   border-radius: 8px;
   transition: background 0.15s;
 }
 
 .next-item:hover { background: rgba(255,255,255,0.07); }
+
+.next-item.active {
+  background: rgba(255,255,255,0.12);
+}
 
 .next-thumb {
   width: 64px;
@@ -216,6 +228,72 @@
   text-align: center;
   margin-top: auto;
   padding-top: 8px;
+}
+
+.hero-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1400;
+}
+
+.hero-modal.open {
+  display: flex;
+}
+
+.hero-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+}
+
+.hero-modal-dialog {
+  position: relative;
+  width: min(960px, calc(100vw - 32px));
+  background: #120f0d;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+.hero-modal-header {
+  padding: 14px 18px 0;
+}
+
+.hero-modal-title {
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hero-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.hero-modal-frame-wrap {
+  aspect-ratio: 16/9;
+  background: #000;
+  margin-top: 12px;
+}
+
+.hero-modal-frame-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 /* ════════════════════════════════

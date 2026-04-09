@@ -12,11 +12,12 @@
       "top": true,
       "rank": 1,
       "new": true,
-      "comments": 16
+      "comments": 16,
+      "trailerUrl": "https://www.youtube.com/watch?v=MkJYSkaygi4"
     },
     {
       "id": 2,
-      "title": "The Action",
+      "title": "Zura",
       "genre": "action",
       "rating": 4.2,
       "year": 2025,
@@ -26,11 +27,12 @@
       "top": true,
       "rank": 2,
       "new": true,
-      "comments": 10
+      "comments": 10,
+      "trailerUrl": "https://www.youtube.com/watch?v=ONgzJGzdNFM"
     },
     {
       "id": 3,
-      "title": "The Comedy",
+      "title": "Баян Боол",
       "genre": "comedy",
       "rating": 4.0,
       "year": 2025,
@@ -40,11 +42,12 @@
       "top": true,
       "rank": 3,
       "new": false,
-      "comments": 20
+      "comments": 20,
+      "trailerUrl": "https://www.youtube.com/watch?v=091-8S6UH4c"
     },
     {
       "id": 4,
-      "title": "The Thriller",
+      "title": "Мөрч",
       "genre": "thriller",
       "rating": 3.9,
       "year": 2024,
@@ -54,11 +57,12 @@
       "top": true,
       "rank": 4,
       "new": false,
-      "comments": 5
+      "comments": 5,
+      "trailerUrl": "https://www.youtube.com/watch?v=Woq2tN4y284"
     },
     {
       "id": 5,
-      "title": "The Romance",
+      "title": "1990",
       "genre": "romance",
       "rating": 4.1,
       "year": 2026,
@@ -68,11 +72,12 @@
       "top": true,
       "rank": 5,
       "new": true,
-      "comments": 30
+      "comments": 30,
+      "trailerUrl": "https://www.youtube.com/watch?v=-GWDWRjJzdo"
     },
     {
       "id": 6,
-      "title": "The Horror",
+      "title": "Застав",
       "genre": "horror",
       "rating": 3.8,
       "year": 2025,
@@ -82,11 +87,12 @@
       "top": true,
       "rank": 6,
       "new": false,
-      "comments": 8
+      "comments": 8,
+      "trailerUrl": "https://www.youtube.com/watch?v=OOb1_7y37to"
     },
     {
       "id": 7,
-      "title": "The Sci-Fi",
+      "title": "Монгол",
       "genre": "sci-fi",
       "rating": 4.3,
       "year": 2026,
@@ -96,11 +102,12 @@
       "top": true,
       "rank": 7,
       "new": true,
-      "comments": 25
+      "comments": 25,
+      "trailerUrl": "https://www.youtube.com/watch?v=riQ1SBV_y7Y"
     },
     {
       "id": 8,
-      "title": "The Adventure",
+      "title": "Хутулун Гүнж",
       "genre": "adventure",
       "rating": 4.0,
       "year": 2024,
@@ -110,11 +117,12 @@
       "top": true,
       "rank": 8,
       "new": false,
-      "comments": 12
+      "comments": 12,
+      "trailerUrl": "https://www.youtube.com/watch?v=I6ou4JBAGig"
     },
     {
       "id": 9,
-      "title": "The Mystery",
+      "title": "Содура",
       "genre": "mystery",
       "rating": 3.7,
       "year": 2025,
@@ -124,11 +132,12 @@
       "top": true,
       "rank": 9,
       "new": false,
-      "comments": 7
+      "comments": 7,
+      "trailerUrl": "https://www.youtube.com/watch?v=HGUQAVRVkKQ"
     },
     {
       "id": 10,
-      "title": "The Fantasy",
+      "title": "Гарын таван хуруу",
       "genre": "fantasy",
       "rating": 4.4,
       "year": 2026,
@@ -138,11 +147,12 @@
       "top": true,
       "rank": 10,
       "new": true,
-      "comments": 40
+      "comments": 40,
+      "trailerUrl": "https://www.youtube.com/watch?v=HIPya1p5spc"
     },
     {
       "id": 11,
-      "title": "New Movie 1",
+      "title": "Татар",
       "genre": "drama",
       "rating": 4.1,
       "year": 2026,
@@ -152,11 +162,12 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 3
+      "comments": 3,
+      "trailerUrl": "https://www.youtube.com/watch?v=IZN-7OSB2gc"
     },
     {
       "id": 12,
-      "title": "New Movie 2",
+      "title": "Чимээгүй Хотын Жолооч",
       "genre": "action",
       "rating": 3.9,
       "year": 2026,
@@ -166,11 +177,12 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 5
+      "comments": 5,
+      "trailerUrl": "https://www.youtube.com/watch?v=tQoV36WSDjw"
     },
     {
       "id": 13,
-      "title": "New Movie 3",
+      "title": "Эргэж Ирэхгүй Намар",
       "genre": "comedy",
       "rating": 4.2,
       "year": 2026,
@@ -180,11 +192,12 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 9
+      "comments": 9,
+      "trailerUrl": "https://www.youtube.com/watch?v=l_txR7DT0rg"
     },
     {
       "id": 14,
-      "title": "New Movie 4",
+      "title": "Z zone",
       "genre": "thriller",
       "rating": 3.8,
       "year": 2026,
@@ -194,11 +207,12 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 2
+      "comments": 2,
+      "trailerUrl": "https://www.youtube.com/watch?v=3hBidXaruyo"
     },
     {
       "id": 15,
-      "title": "New Movie 5",
+      "title": "Single Landies IV",
       "genre": "romance",
       "rating": 4.0,
       "year": 2026,
@@ -208,11 +222,12 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 6
+      "comments": 6,
+      "trailerUrl": "https://www.youtube.com/watch?v=1KynAubWre0"
     },
     {
       "id": 16,
-      "title": "New Movie 6",
+      "title": "Хар Сувдны Нууц",
       "genre": "sci-fi",
       "rating": 4.3,
       "year": 2026,
@@ -222,7 +237,8 @@
       "top": false,
       "rank": null,
       "new": true,
-      "comments": 11
+      "comments": 11,
+      "trailerUrl": "https://www.youtube.com/watch?v=NPxSBQNsbzE"
     }
   ]
 }

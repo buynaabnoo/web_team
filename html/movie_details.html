@@ -7,6 +7,18 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Movie Title</title>
+  <meta name="description" id="movieMetaDescription" content="Explore movie details, trailers, ratings, and reviews on Rately." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" id="movieCanonical" href="https://rately.example.com/html/movie_details.html" />
+  <meta property="og:type" content="video.movie" />
+  <meta property="og:title" id="movieOgTitle" content="Movie Title | Rately" />
+  <meta property="og:description" id="movieOgDescription" content="Explore movie details, trailers, ratings, and reviews on Rately." />
+  <meta property="og:url" id="movieOgUrl" content="https://rately.example.com/html/movie_details.html" />
+  <meta property="og:image" id="movieOgImage" content="https://rately.example.com/img/logo_croped.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="movieTwitterTitle" content="Movie Title | Rately" />
+  <meta name="twitter:description" id="movieTwitterDescription" content="Explore movie details, trailers, ratings, and reviews on Rately." />
+  <meta name="twitter:image" id="movieTwitterImage" content="https://rately.example.com/img/logo_croped.png" />
   <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" />
   <link rel="stylesheet" type="text/css" href="../css/styles.css" />
@@ -63,8 +75,9 @@
       </li>
     </ul>
 
-    <form class="nav-search" action="/html/movies.html" method="get">
-      <input type="text" name="search" placeholder="Search movies, shows…" />
+    <form class="nav-search" action="/html/advanced_search.html" method="get">
+      <label class="sr-only" for="movieNavSearchInput">Search movies or shows</label>
+      <input type="text" id="movieNavSearchInput" name="search" placeholder="Search movies, shows…" />
       <button type="submit" class="nav-search-btn">Search</button>
     </form>
 
@@ -102,7 +115,9 @@
       </div>
       <div class="rating-item">
         <label id="your-rating-label">Your rating</label>
-        <button class="rate-link">Rate</button>
+        <button class="rate-link" id="toggleRatingBtn" type="button">Rate this title</button>
+        <div class="detail-star-rate" id="detailStarRate" role="radiogroup" aria-labelledby="your-rating-label"></div>
+        <div class="detail-rating-note" id="detailRatingNote" role="status" aria-live="polite">Tap a star to rate</div>
       </div>
     </div>
   </div>
@@ -114,7 +129,7 @@
       <img src="https://placehold.co/300x450" alt="Movie Poster" />
     </div>
 
-    <div class="trailer">
+    <div class="trailer" aria-label="Movie trailer player">
       <div class="play-btn">&#9654;</div>
       <span class="trailer-duration">0:00</span>
     </div>
@@ -136,6 +151,18 @@
     </div>
   </div>
 
+  <div class="review-compose" id="reviewComposer">
+    <div class="review-compose-header">
+      <h2 class="review-compose-title" id="reviewComposerHeading">Write a Review</h2>
+      <span class="review-compose-note" id="reviewComposeNote" role="status" aria-live="polite">Share what you thought about this title.</span>
+    </div>
+    <label class="sr-only" for="reviewText">Write your review</label>
+    <textarea id="reviewText" class="review-textarea" rows="5" placeholder="Write your review here..." aria-describedby="reviewComposeNote"></textarea>
+    <div class="review-compose-actions">
+      <button class="btn-primary" id="submitReviewBtn" type="button">Post review</button>
+    </div>
+  </div>
+
   <hr class="divider" />
 
   <!-- Credits and Review links -->
@@ -153,7 +180,7 @@
   </div>
 
   <!-- Featured Reviews -->
-  <div class="reviews-grid" id="reviews-grid">
+  <div class="reviews-grid" id="reviews-grid" aria-live="polite">
 
     <div class="review-card">
       <div class="review-card-header">
@@ -183,7 +210,7 @@
 
   <!-- See All -->
   <div class="see-all-wrap">
-    <a href="reviews.html" class="btn-see-all">see all reviews</a>
+    <a href="reviews.html" class="btn-see-all" id="seeAllReviewsLink">see all reviews</a>
   </div>
 
 </div>

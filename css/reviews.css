@@ -17,28 +17,29 @@ h1 {
     Left column: small poster (just for appearance, not main focus)
     Right column: movie info card
   */
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 160px 1fr;
   gap: 24px;
   align-items: start;
   margin-bottom: 32px;
 }
 
 /* Poster on reviews page is landscape and smaller */
-.movie-poster {
+.movie-card {
   background: #ddd8d0;
   border-radius: 12px;
-  aspect-ratio: 16/9;
-  max-height: 350px; /* kept small — it is just for appearance */
+  aspect-ratio: 2 / 3;
+  max-height: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.movie-poster svg {
-  opacity: 0.45;
-  width: 32px;
-  height: 32px;
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Movie title above the info card */
@@ -59,6 +60,17 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.movie-summary-content {
+  min-width: 0;
+}
+
+.movie-info-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
 }
 
 /* ── Toggle switch ── */
@@ -130,29 +142,184 @@ h1 {
   gap: 14px;
 }
 
+.review-user-rating {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.reviews-empty {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  color: var(--muted);
+  text-align: center;
+}
+
 /* ── Mobile (max 600px) ── */
 @media (max-width: 600px) {
   h1 { font-size: 1.7rem; }
 
-  /*
-    On mobile, poster and info card sit side by side in a small row.
-    Poster stays tiny, info card takes remaining space.
-  */
-  .movie-summary {
-    grid-template-columns: 100px 1fr;
-    gap: 14px;
+  .page {
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
-  .movie-poster {
-    max-height: 80px;
+  .movie-summary {
+    grid-template-columns: 84px 1fr;
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 22px;
+  }
+
+  .movie-card {
+    max-height: 126px;
+    border-radius: 10px;
   }
 
   .movie-info-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    line-height: 1.2;
   }
 
   .movie-info {
     padding: 12px 14px;
+    gap: 9px;
+    border-radius: 14px;
+  }
+
+  .toggle-row,
+  .rating-row {
+    font-size: 0.82rem;
+  }
+
+  .toggle-row span:last-child,
+  .rating-row .count {
+    line-height: 1.3;
+  }
+
+  .movie-info-actions {
+    gap: 8px;
+  }
+
+  .movie-info-actions .info-link {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    background: var(--accent-light);
+    text-underline-offset: 0;
+  }
+
+  .reviews-list {
+    gap: 12px;
+  }
+
+  .review-card {
+    padding: 16px 16px 14px;
+    border-radius: 14px;
+  }
+
+  .review-date,
+  .username-badge {
+    font-size: 0.72rem;
+  }
+
+  .review-card-header {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .review-movie-name {
+    font-size: 0.95rem;
+  }
+
+  .review-comment {
+    font-size: 0.82rem;
+    min-height: 0;
+  }
+  .review-movie-name {
+    font-size: 0.95rem;
+  }
+
+  .review-comment {
+    font-size: 0.82rem;
+    min-height: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  h1 {
+    font-size: 1.45rem;
+    margin-bottom: 18px;
+  }
+
+  .movie-summary {
+    grid-template-columns: 72px 1fr;
     gap: 10px;
+  }
+
+  .movie-card {
+    max-height: 108px;
+  }
+
+  .movie-info {
+    padding: 11px 12px;
+  }
+
+  .movie-info-title {
+    font-size: 0.94rem;
+  }
+
+  .toggle-row,
+  .rating-row {
+    font-size: 0.78rem;
+  }
+
+  .movie-info-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .movie-info-actions .info-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .review-card {
+    padding: 14px 14px 12px;
+  }
+
+  .review-comment {
+    font-size: 0.79rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .movie-summary {
+    grid-template-columns: 72px 1fr;
+    gap: 10px;
+  }
+
+  .movie-card {
+    max-height: 108px;
+  }
+
+  .movie-info {
+    padding: 11px 12px;
+  }
+
+  .movie-info-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .movie-info-actions .info-link {
+    width: 100%;
+    justify-content: center;
   }
 }

@@ -42,6 +42,18 @@ body {
   padding-top: var(--nav-height);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .page {
   max-width: 1200px;
   margin: 0 auto;
@@ -506,7 +518,7 @@ h1, h2, h3 {
 
 .nav-search:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-light);
+  box-shadow: none;
 }
 
 .nav-search input {
@@ -522,6 +534,11 @@ h1, h2, h3 {
 }
 
 .nav-search input::placeholder { color: var(--muted); }
+
+.nav-search input:focus-visible,
+.nav-search-btn:focus-visible {
+  outline: none;
+}
 
 .nav-search-btn {
   background: var(--accent);
